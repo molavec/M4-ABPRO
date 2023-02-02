@@ -18,7 +18,7 @@ const getProductListHome = (productList) => {
             </div>
             <div class="box-cta col-md-8">
                 <button info="${JSON.stringify(product).replace(/\"/g, '\'')}" class="add-button btn btn-outline-success btn-sm" type="button">Añadir</button>
-                <button class="added-button btn btn-outline-success btn-sm" type="button" style="display:none;">Añadido</button>
+                <button class="add-button btn btn-outline-success btn-sm" type="button" style="display:none;">Añadido</button>
             </div>
           </div>
         </div>
