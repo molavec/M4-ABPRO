@@ -50,8 +50,8 @@
 		<!--Header-->
 		<header class="mb-4">
 
-			<nav class="navbar navbar-expand-lg p-3">
-				<div class="container">
+			<nav class="navbar fixed-top navbar-expand-lg p-3">
+				<div class="container-fluid">
 					<div class="row">
 						<div class="col-6 col-md-8">
 							<!--logo-->
@@ -150,6 +150,17 @@
 								<div class="single-feature-txt text-center">
 									<h3><a href="#">modern arm chair</a></h3>
 									<h5>$299.00</h5>
+									<p class="">SFG12123</p>
+            			<p class="text-left">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+								</div>
+								<div class="add-to-cart-box row my-4">
+									<div class="box-cantidad col-md-4 pl-2">
+											<input class="input-cantidad" type="number" placeholder="cantidad" value="1"/>
+									</div>
+									<div class="box-cta col-md-8">
+											<button info="${JSON.stringify(product).replace(/\"/g, '\'')}" class="add-button btn btn-outline-success btn-sm" type="button">Añadir</button>
+											<button class="added-button btn btn-outline-success btn-sm" type="button" style="display:none;">Añadido</button>
+									</div>
 								</div>
 							</div>
 						</div>

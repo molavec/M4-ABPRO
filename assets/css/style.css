@@ -108,8 +108,25 @@ html,body{height: 100%;}
 /*=============Style css=========*/
 
 /*-------------------------------------
+        1.  Home
+--------------------------------------*/
+
+#home {
+    margin-top: 100px;
+    padding-left: 5%;
+    padding-right: 5%; 
+}
+
+
+
+/*-------------------------------------
         2. Top-area
 --------------------------------------*/
+
+.navbar {
+    background-color: #ffffff;
+}
+
 nav.navbar.bootsnav {
     background-color: transparent;
     border-bottom: transparent;
@@ -728,6 +745,20 @@ span.feature-review {margin-left: 10px;}
     color:  #5f5b57;
     font-weight:  400;
 }
+
+.feature .input-cantidad {
+    width: 100%;
+    text-align: center;
+}
+
+.feature .add-button {
+    width: 100%;
+    background: #e99c2e;
+    border: 1px solid #e99c2e;
+    color: #ffffff;
+    border-radius: 0px;
+}
+
 /*.single-feature-txt */
 
 /*-------------------------------------       
