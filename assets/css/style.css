@@ -53,8 +53,8 @@ a,a:hover,a:active,a:focus {
 	display:inline-block;
 	text-decoration:none;
 	color: #616060;
-	font-size:16px;
-	padding:0;
+	/* font-size:16px; */
+	/* padding:0; */
     font-weight: 500;
 }
 h1,h2,h3,h4,h5,h6 { 
@@ -121,16 +121,16 @@ nav.navbar.bootsnav {
     color: #616060;
     font-size: 24px;
     font-weight: 500;
-    padding: 45px 0px;
+    /* padding: 45px 0px; */
     text-transform:capitalize;
 }
-.navbar-header a.navbar-brand span{display: inline-block;color:#e99c2e;text-transform:capitalize;}
+//.navbar-header a.navbar-brand span{display: inline-block;color:#e99c2e;text-transform:capitalize;}
 
 .wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:hover,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:focus {padding:30px 0px;}
 /*.navbar-brand*/
 
 /*.nav li*/
-nav.navbar.bootsnav ul.nav > li > a {
+/* nav.navbar.bootsnav ul.nav > li > a {
     color: #616060;
     font-size: 16px;
     font-weight: 500;
@@ -140,7 +140,7 @@ nav.navbar.bootsnav ul.nav > li > a {
     -ms-transition: 0.3s linear; 
     -o-transition: 0.3s linear; 
     transition: 0.3s linear;
-}
+} */
 nav.navbar.bootsnav ul.nav > li > a {padding: 48px 25px;}
 nav.navbar.bootsnav ul.nav > li > a:hover,nav.navbar.bootsnav ul.nav > li > a:focus{color: #e99c2e;}
 nav.navbar.bootsnav ul.nav > li.active>a {color: #e99c2e;}
@@ -961,4 +961,13 @@ span.feature-review {margin-left: 10px;}
     0%   {bottom:0px;}
     100%  {bottom:7px;}
 }
-/*========================Thank you=================
+/*========================Thank you=================*/
+
+
+/*-------------------------------------
+    Custom
+--------------------------------------*/
+
+.navbar .row {
+    width: 100%;
+}

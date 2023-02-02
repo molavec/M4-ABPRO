@@ -25,6 +25,7 @@ $(document).ready(function(){
 				$('.return-to-top').fadeOut();
 			}
 		});
+		
 		$('.return-to-top').on('click',function(){
 				$('html, body').animate({
 				scrollTop: 0
