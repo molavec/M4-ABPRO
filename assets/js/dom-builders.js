@@ -1,22 +1,3 @@
-const getProductListCart = (productList) => {
-
-  const productListCart = productList.map( (product) => {
-      return `
-
-          <li>
-              <img src="${product.image}" class="cart-image" alt="Image ${product.nombre}">
-              <p id="nombreP">${product.nombre}</p>
-              <p>${product.cantidad} x ${product.price}</p>
-              <p>${product.code}</p>
-              <button class="cart-remove" qty=${product.cantidad} uuid="${product.code}"> Eliminar </button>
-          </li>
-          <br>
-
-  `
-  });
-  return productListCart.join('\n');
-};
-
 const getProductListHome = (productList) => {
 
   const productListHome = productList.map((product) => {
@@ -42,11 +23,29 @@ const getProductListHome = (productList) => {
           </div>
         </div>
       </div>
-      
+
     `
     });
     return productListHome.join('\n');
 };
 
+const getProductListCart = (productList) => {
 
+  const productListCart = productList.map( (product) => {
+      return `
 
+          <li>
+              <img src="${product.image}" class="cart-image" alt="Image ${product.nombre}">
+              <p id="nombreP">${product.nombre}</p>
+              <p>${product.cantidad} x ${product.price}</p>
+              <p>${product.code}</p>
+              <button class="cart-remove" qty=${product.cantidad} uuid="${product.code}"> Eliminar </button>
+          </li>
+          <br>
+
+  `
+  });
+  return productListCart.join('\n');
+};
+
+export { getProductListHome, getProductListCart };

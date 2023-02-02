@@ -1,3 +1,6 @@
+import catalog from "./catalog.js";
+import { getProductListHome, getProductListCart } from "./dom-builders.js";
+
 $(document).ready(function(){
 	"use strict";
 
