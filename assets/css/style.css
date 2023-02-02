@@ -706,9 +706,9 @@ p.arrival-review span {margin-right: 15px;}
 /*-------------------------------------
         7. Features
 --------------------------------------*/
-.feature {padding:110px 0 0px;}
+.feature {padding:80px 0 50px;}
 
-.feature-content,.blog-content{margin-top: 75px;}
+.feature-content,.blog-content{margin-top: 75px; }
 .single-feature,.single-blog {margin-bottom:30px;}
 
 /*.single-feature-txt */
