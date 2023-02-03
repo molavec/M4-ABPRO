@@ -55,19 +55,19 @@ $(document).ready(function(){
 
 		// reconstruir html con el listado de productos
 		// Actualizar totales
-		const totalNeto = getTotalWithoutTax(productsInCart);
-		const iva = getTax(productsInCart);
-		const total = getTotalWithTax(productsInCart);
+		// const totalNeto = getTotalWithoutTax(productsInCart);
+		// const iva = getTax(productsInCart);
+		// const total = getTotalWithTax(productsInCart);
 		
 		// console.log('totalNeto', totalNeto);
 		// console.log('iva', iva);
 		// console.log('total', total);
 
-		$("#total-neto").html(totalNeto);
-		$("#iva").html(iva);
-		$("#total").html(total);
-		$("#shipping").html(getShippingCost(total));
-		$("#total-with-shipping").html(total + getShippingCost(total));
+		$("#total-neto").html(getTotalWithoutTax(productsInCart));
+		$("#iva").html(getTax(productsInCart));
+		$("#total").html(getTotalWithTax(productsInCart));
+		$("#shipping").html(getShippingCost(getTotalWithTax(productsInCart)));
+		$("#total-with-shipping").html(getTotalWithTax(productsInCart) + getShippingCost(getTotalWithTax(productsInCart)));
 		
 		const productsInCartHTML = getProductListCart(productsInCart);
 		//console.log('productsInCartHTML', productsInCartHTML);
@@ -95,11 +95,11 @@ $(document).ready(function(){
 				// remover al padre
 				$(this).parent().remove();
 				
-				// // Reconstruye el html del totalizador
-				// const productsInCartHTML = getProductListCart(productsInCart);
+				// Reconstruye el html del totalizador
+				const productsInCartHTML = getProductListCart(productsInCart);
 
 				// //console.log('productsInCartHTML', productsInCartHTML);
-				// $("#totalizador .item-list").html(productsInCartHTML);
+				$("#totalizador .item-list").html(productsInCartHTML);
 
 				// recalcular totales
 				$("#total-neto").html(getTotalWithoutTax(productsInCart));
@@ -107,7 +107,7 @@ $(document).ready(function(){
 				$("#total").html(getTotalWithTax(productsInCart));
 				
 				$("#shipping").html(getShippingCost(getTotalWithTax(productsInCart)));
-				$("#total-with-shipping").html(getTotalWithTax(productsInCart) + getShippingCost(total));
+				$("#total-with-shipping").html(getTotalWithTax(productsInCart) + getShippingCost(getTotalWithTax(productsInCart)));
 
 
 		});
