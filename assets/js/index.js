@@ -48,32 +48,15 @@ $(document).ready(function(){
 		contadorProductos = contadorProductos + parseInt(quantity);
 		$("#cart-qty").html(contadorProductos);
 
-		// add product to productsInCart Array
+		// crea listado de productos en el carro
 		productsInCart.push(product);
-		// console.log('productsInCart', productsInCart);
-
-
-		// reconstruir html con el listado de productos
-		// Actualizar totales
-		// const totalNeto = getTotalWithoutTax(productsInCart);
-		// const iva = getTax(productsInCart);
-		// const total = getTotalWithTax(productsInCart);
-		
-		// console.log('totalNeto', totalNeto);
-		// console.log('iva', iva);
-		// console.log('total', total);
-
-		$("#total-neto").html(getTotalWithoutTax(productsInCart));
-		$("#iva").html(getTax(productsInCart));
-		$("#total").html(getTotalWithTax(productsInCart));
-		$("#shipping").html(getShippingCost(getTotalWithTax(productsInCart)));
-		$("#total-with-shipping").html(getTotalWithTax(productsInCart) + getShippingCost(getTotalWithTax(productsInCart)));
-		
 		const productsInCartHTML = getProductListCart(productsInCart);
-		//console.log('productsInCartHTML', productsInCartHTML);
 		$("#totalizador .item-list").html(productsInCartHTML);
+		// console.log('productsInCart', productsInCart);
+		// console.log('productsInCartHTML', productsInCartHTML);
 
-		
+		// Actualizar totales
+		updateTotals();
 
 		// Add event to remove button
 		$('#totalizador .cart-remove').click( function() {
@@ -102,12 +85,7 @@ $(document).ready(function(){
 				$("#totalizador .item-list").html(productsInCartHTML);
 
 				// recalcular totales
-				$("#total-neto").html(getTotalWithoutTax(productsInCart));
-				$("#iva").html(getTax(productsInCart));
-				$("#total").html(getTotalWithTax(productsInCart));
-				$("#shipping").html(getShippingCost(getTotalWithTax(productsInCart)));
-				$("#total-with-shipping").html(getTotalWithTax(productsInCart) + getShippingCost(getTotalWithTax(productsInCart)));
-
+				updateTotals();
 		});
 
 	});
