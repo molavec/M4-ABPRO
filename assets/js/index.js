@@ -105,13 +105,26 @@ $(document).ready(function(){
 				$("#total-neto").html(getTotalWithoutTax(productsInCart));
 				$("#iva").html(getTax(productsInCart));
 				$("#total").html(getTotalWithTax(productsInCart));
-				
 				$("#shipping").html(getShippingCost(getTotalWithTax(productsInCart)));
 				$("#total-with-shipping").html(getTotalWithTax(productsInCart) + getShippingCost(getTotalWithTax(productsInCart)));
-
 
 		});
 
 	});
 
 });
+
+const updateTotals = () => {
+
+	const totalWithoutTax = getTotalWithoutTax(productsInCart);
+	const tax = getTax(productsInCart);
+	const totalWithTax = getTotalWithTax(productsInCart);
+	const shippingCost = getShippingCost(getTotalWithTax(productsInCart)); 
+	const totalWithShipping = getTotalWithTax(productsInCart) + getShippingCost(getTotalWithTax(productsInCart));
+
+	$("#total-neto").html(totalWithoutTax);
+	$("#iva").html(tax);
+	$("#total").html(totalWithTax);
+	$("#shipping").html(shippingCost);
+	$("#total-with-shipping").html(totalWithShipping);
+}
