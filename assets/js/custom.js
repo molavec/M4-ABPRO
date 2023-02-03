@@ -19,20 +19,7 @@ $(document).ready(function(){
 		// console.log('info', $(this).attr('info'));
 		// console.log('info parsed', JSON.parse($(this).attr('info').replace(/\'/g, '\"')));
 
-		const product = JSON.parse($(this).attr('info').replace(/\'/g, '\"'));
-		// console.log('product', product);
-
-		// Obtener la cantidad de productos
-		// TIP: utilizar .parent() y .child() para seleccionar la cantidad de productos.
-		const cantidad = $(this).parent().parent().children(".box-cantidad").children(".input-cantidad").val();
-		// console.log('cantidad', cantidad);
-		product.cantidad = cantidad;
-		// console.log('product con catidad', product);
-
-		// Cambiar el estado de boton anadido, usar if
-		// TIP: crer 2 botones. utilizar .hide() .show() o .toggle() para cambiar la visibilidad de uno u otro.
-		// TIP alt: utilizar .css()
-		// esconde boton actual
+		// Cambiar el estado de boton anadido, esconde boton actual
 		const addButton = $(this);
 		const addedButton = $(this).siblings(".added-button");
 		addButton.toggle();
@@ -45,6 +32,21 @@ $(document).ready(function(){
 				},
 				1000
 		);
+
+		// get product info
+		const product = JSON.parse($(this).attr('info').replace(/\'/g, '\"'));
+		// console.log('product', product);
+
+		// Obtener la cantidad de productos
+		const cantidad = $(this).parent().parent().children(".box-cantidad").children(".input-cantidad").val();
+		// console.log('cantidad', cantidad);
+		product.cantidad = cantidad;
+		// console.log('product con catidad', product);
+
+		
+		// aumentar el contador de cantidad
+		contadorProductos = contadorProductos + parseInt(cantidad);
+		$("#cart-qty").html(contadorProductos);
 
 		// add product 
 		// TIP: utilizar array.push() para actualizar la variable 'productsInCart'
@@ -76,9 +78,7 @@ $(document).ready(function(){
 		//console.log('productsInCartHTML', productsInCartHTML);
 		$("#totalizador .item-list").html(productsInCartHTML);
 
-		//aumentar el contador de cantidad
-		contadorProductos = contadorProductos + parseInt(cantidad);
-		$("#cart-qty").html(contadorProductos);
+		
 
 		// Add event to remove button
 		$('#totalizador .cart-remove').click( function() {
@@ -116,14 +116,6 @@ $(document).ready(function(){
 
 
 		});
-
-	});
-
-	// acciones del boton del carro 
-	$('#cart-button').click(function () {
-			//console.log('boton carro', $(this));
-			// deplegar/esconder el totalizador
-			$("#totalizador").toggle()
 
 	});
 
