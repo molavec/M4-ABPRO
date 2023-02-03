@@ -1,15 +1,15 @@
 // --> CALCULO DE TOTALES
 /**
  * Total sin impuestos
- * @param { [{precio: number; cantidad: number;}] } productsInCart 
+ * @param { [{price: number; quantity: number;}] } productsInCart 
  */
 const getTotalWithoutTax = (productsInCart) => {
   const value = productsInCart.reduce(
       (acumulador, product) => {
           // console.log('acumulador', acumulador)
-          // console.log('product.precio', product.precio);
-          // console.log('product.cantidad', product.cantidad);
-          const aux = parseInt(acumulador) + parseInt(product.precio) * parseInt(product.cantidad)
+          // console.log('product.price', product.price);
+          // console.log('product.quantity', product.quantity);
+          const aux = parseInt(acumulador) + parseInt(product.price) * parseInt(product.quantity)
           // console.log('aux', aux);
           return aux;
       }, 0
@@ -21,12 +21,12 @@ const getTotalWithoutTax = (productsInCart) => {
 
 /**
 * Total con impuestos
-* @param { [{precio: number; qty: number;}] } productsInCart 
+* @param { [{price: number; qty: number;}] } productsInCart 
 */
 const getTotalWithTax = (productsInCart) => {
   const TAX = 1.19;
   const value = productsInCart.reduce(
-      (acumulador, product) => (acumulador + parseInt(product.precio) * parseInt(product.cantidad)),
+      (acumulador, product) => (acumulador + parseInt(product.price) * parseInt(product.quantity)),
       0
   );
   return value * TAX;
@@ -34,24 +34,25 @@ const getTotalWithTax = (productsInCart) => {
 
 /**
 * Valor Impuesto
-* @param { [{precio: number; qty: number;}] } productsInCart 
+* @param { [{price: number; qty: number;}] } productsInCart 
 */
 const getTax = (productsInCart) => {
   const TAX = 0.19;
   const value = productsInCart.reduce(
-      (acumulador, product) => (acumulador + parseInt(product.precio) * parseInt(product.cantidad)),
+      (acumulador, product) => (acumulador + parseInt(product.price) * parseInt(product.quantity)),
       0
   );
+  console.log('value', value);
   return value * TAX;
 }
 
 /**
 * Valor Impuesto
-* @param { [{precio: number; qty: number;}] } productsInCart 
+* @param { [{price: number; qty: number;}] } productsInCart 
 */
 const getTotalProducts = (productsInCart) => {
   const value = productsInCart.reduce(
-      (acumulador, product) => (acumulador + parseInt(product.cantidad)),
+      (acumulador, product) => (acumulador + parseInt(product.quantity)),
       0
   );
   return value;

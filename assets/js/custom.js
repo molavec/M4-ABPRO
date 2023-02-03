@@ -38,35 +38,30 @@ $(document).ready(function(){
 		// console.log('product', product);
 
 		// Obtener la cantidad de productos
-		const cantidad = $(this).parent().parent().children(".box-cantidad").children(".input-cantidad").val();
-		// console.log('cantidad', cantidad);
-		product.cantidad = cantidad;
+		const quantity = $(this).parent().parent().children(".box-cantidad").children(".input-cantidad").val();
+		// console.log('quantity', quantity);
+		product.quantity = quantity;
 		// console.log('product con catidad', product);
 
 		
 		// aumentar el contador de cantidad
-		contadorProductos = contadorProductos + parseInt(cantidad);
+		contadorProductos = contadorProductos + parseInt(quantity);
 		$("#cart-qty").html(contadorProductos);
 
-		// add product 
-		// TIP: utilizar array.push() para actualizar la variable 'productsInCart'
-
+		// add product to productsInCart Array
 		productsInCart.push(product);
-		//console.log('productsInCart', productsInCart);
+		// console.log('productsInCart', productsInCart);
 
 
 		// reconstruir html con el listado de productos
-		// TIP: .html() para reemplazar el $(#totalizador).html(codigohtml)
-
 		// Actualizar totales
 		const totalNeto = getTotalWithoutTax(productsInCart);
 		const iva = getTax(productsInCart);
 		const total = getTotalWithTax(productsInCart);
 		
-
 		// console.log('totalNeto', totalNeto);
-		console.log('iva', iva);
-		console.log('total', total);
+		// console.log('iva', iva);
+		// console.log('total', total);
 
 		$("#total-neto").html(totalNeto);
 		$("#iva").html(iva);

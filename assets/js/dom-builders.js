@@ -35,11 +35,11 @@ const getProductListCart = (productList) => {
       return `
 
           <li>
-              <img src="${product.image}" class="cart-image" alt="Image ${product.nombre}">
-              <p id="nombreP">${product.nombre}</p>
-              <p>${product.cantidad} x ${product.price}</p>
+              <img src="${product.image}" class="cart-image" alt="Image ${product.name}">
+              <p>${product.name}</p>
+              <p>${product.quantity} x ${product.price}</p>
               <p>${product.code}</p>
-              <button class="cart-remove" qty=${product.cantidad} uuid="${product.code}"> Eliminar </button>
+              <button class="cart-remove" qty=${product.quantity} uuid="${product.code}"> Eliminar </button>
           </li>
           <br>
 

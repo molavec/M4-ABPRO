@@ -1002,3 +1002,8 @@ span.feature-review {margin-left: 10px;}
 .navbar .row {
     width: 100%;
 }
+
+
+.cart-image {
+    max-height: 70px;
+}
