@@ -125,6 +125,13 @@ $(document).ready(function(){
 
 	});
 
+	// acciones para limpiar el carro
+	$('#clean-cart').click( function(){
+		cart.clear();
+		$("#totalizador .item-list").html('');
+
+	});
+
 });
 
 const updateTotals = () => {
