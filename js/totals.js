@@ -42,7 +42,7 @@ const getTax = (productsInCart) => {
       (acumulador, product) => (acumulador + parseInt(product.price) * parseInt(product.quantity)),
       0
   );
-  console.log('value', value);
+  // console.log('value', value);
   return value * TAX;
 }
 

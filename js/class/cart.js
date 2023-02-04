@@ -50,6 +50,10 @@ Cart.prototype.removeItem = function(id) {
  */
 Cart.prototype.updateItem = function(id, quantity) {
   let item = this.items.find(i => i.product.id === id);
+  console.log("id", id)
+  console.log("quantity", quantity)
+  console.log("item", item)
+
   if (item) {
     item.quantity = parseInt(quantity);
     if (item.quantity <= 0) {

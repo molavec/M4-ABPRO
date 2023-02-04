@@ -34,14 +34,25 @@ const getProductListCart = (itemList) => {
   const productListCart = itemList.map( (item) => {
       return `
 
-          <li>
-              <img src="${item.product.getImage()}" class="cart-image" alt="Image ${item.product.getName()}">
+        <li>
+
+          <div class="cart-image-box">
+            <img src="${item.product.getImage()}" class="cart-image" alt="Image ${item.product.getName()}">
+          </div>
+
+          <div class="cart-info-box">
               <p>${item.product.getName()}</p>
-              <input type="number" value=${item.quantity}></input>
+              <input class="cart-quantity" type="number" value=${item.quantity}></input>
               <p>${item.quantity} x ${item.product.getPrice()}</p>
               <p>${item.product.getId()}</p>
+          </div>
+              
+          <div class="cart-cta-box">
+              <button class="cart-refresh" qty=${item.quantity} uuid="${item.product.getId()}"> Actualizar </button>
               <button class="cart-remove" qty=${item.quantity} uuid="${item.product.getId()}"> Eliminar </button>
-          </li>
+          </div>
+
+        </li>
           <br>
 
   `
