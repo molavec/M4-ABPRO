@@ -34,10 +34,10 @@ const getProductListCart = (productList) => {
   const productListCart = productList.map( (product) => {
       return `
 
-          <li>
               <img src="${product.image}" class="cart-image" alt="Image ${product.name}">
               <p>${product.name}</p>
-              <p>${product.quantity} x ${product.price}</p>
+              <input type="number" value=${product.quantity}></input>
+              <p>precio ${product.price}<p>
               <p>${product.code}</p>
               <button class="cart-remove" qty=${product.quantity} uuid="${product.code}"> Eliminar </button>
           </li>
