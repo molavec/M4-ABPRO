@@ -17,7 +17,18 @@ function Cart() {
 Cart.prototype.getItems = function() {
   return this.items;
 };
-
+/**
+ * Remove an item from the cart by id
+ * @param {Number} id - The id of the product to remove
+ */
+Cart.prototype.getItem = function(id) {
+  let item = this.items.find(i => {
+    console.log('i.product.id',i.product.getId());
+    console.log('id',id);
+    return i.product.id === id 
+  });
+  return item;
+};
 /**
  * Add an item to the cart
  * @param {Object} product - A product object

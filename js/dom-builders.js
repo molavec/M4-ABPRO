@@ -1,9 +1,11 @@
 const getProductListHome = (productList) => {
 
   const productListHome = productList.map((product) => {
-    return `
+
+    let productBlock =  `<div id="${product.getId()}" class="col-sm-3">`;
+
+    const productInfo = `
     
-      <div id="${product.getId()}" class="col-sm-3">
         <div class="single-feature">
           <img src="${product.getImage()}" alt="feature image">
           <div class="single-feature-txt text-center">
@@ -12,6 +14,7 @@ const getProductListHome = (productList) => {
             <p class="">${product.getId()}</p>
             <p class="text-left">${product.getDescription()}</p>
           </div>
+
           <div class="add-to-cart-box row my-4">
             <div class="box-cantidad col-md-4 pl-2">
                 <input class="input-cantidad" type="number" placeholder="cantidad" value="1"/>
@@ -22,9 +25,29 @@ const getProductListHome = (productList) => {
             </div>
           </div>
         </div>
-      </div>
-
     `
+
+    productBlock += productInfo;
+
+    let productStock = '';
+
+    if(product.getStock()==0){
+      productStock= `<p class="stock-message"> No hay stock</p>`
+    }
+    else if (product.getStock()<=3){
+      productStock= `<p class="stock-message"> Disponible ${product.getStock()} </p>`
+    } else {
+      productStock= `<p class="stock-message"></p>`
+    }
+
+    productBlock += productStock;
+
+    productBlock += `</div>`;
+  
+    return productBlock;
+
+
+
     });
     return productListHome.join('\n');
 };

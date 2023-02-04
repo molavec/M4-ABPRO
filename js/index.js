@@ -43,6 +43,7 @@ $(document).ready(function(){
 		const addedButton = $(this).siblings(".added-button");
 		addButton.toggle();
 		addedButton.toggle();
+		
 
 		setTimeout(
 				function () {
