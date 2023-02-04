@@ -43,6 +43,7 @@ $(document).ready(function(){
 		const addedButton = $(this).siblings(".added-button");
 		addButton.toggle();
 		addedButton.toggle();
+		
 
 		setTimeout(
 				function () {
@@ -73,7 +74,8 @@ $(document).ready(function(){
 		// crea listado de productos en el carro
 		// productsInCart.push(product);
 		cart.addItem(product, quantity);
-		console.log('cart items', cart.getItems());
+		// console.log('cart items', cart.getItems());
+		// console.log('cantidad item 1', cart.getItem(product.id).quantity);
 
 
 		const productsInCartHTML = getProductListCart(cart.getItems());

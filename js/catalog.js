@@ -13,7 +13,7 @@ const catalog = [
     code: 'A002',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     price: 30000,
-    stock: 3,  
+    stock: 6,  
   },
   {
     image:'assets/images/features/f3.jpg',
@@ -21,7 +21,7 @@ const catalog = [
     code: 'A003',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     price: 30000,
-    stock: 3, 
+    stock: 0, 
   },
   {
     image:'assets/images/features/f4.jpg',
