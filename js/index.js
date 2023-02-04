@@ -1,6 +1,24 @@
 import catalog from "./catalog.js";
 import { getProductListHome, getProductListCart } from "./dom-builders.js";
 
+import Product from "./class/product.js";
+import Cart from "./class/cart.js";
+
+// crea un arreglo de productos a partir de la 'base de datos' catalog.js
+
+const products = catalog.map((product)=> {
+		return new Product(
+			product.code,
+			product.name,
+			product.price,
+			product.image,
+			product.description,
+			product.stock,
+		);
+	}
+);
+
+
 // --> EVENTOS
 //variable que almacena los productos anadidos al carro
 var productsInCart = [];
@@ -9,13 +27,13 @@ var contadorProductos = 0;
 $(document).ready(function(){
 	"use strict";
 
-	// add products from catalog
-	$('#products .feature-content .row').html(getProductListHome(catalog));
+	// add products from products
+	$('#products .feature-content .row').html(getProductListHome(products));
 
 	// acciones de los botones anadir al carro 
 	$('.add-to-cart-box .add-button').click( function() {
-		//console.log('boton anadir', this);
-		//console.log('boton anadir', $(this));
+		// console.log('boton anadir', this);
+		// console.log('boton anadir', $(this));
 		// console.log('info', $(this).attr('info'));
 		// console.log('info parsed', JSON.parse($(this).attr('info').replace(/\'/g, '\"')));
 
@@ -42,7 +60,6 @@ $(document).ready(function(){
 		// console.log('quantity', quantity);
 		product.quantity = quantity;
 		// console.log('product con catidad', product);
-
 		
 		// aumentar el contador de cantidad
 		contadorProductos = contadorProductos + parseInt(quantity);
@@ -62,7 +79,6 @@ $(document).ready(function(){
 		$('#totalizador .cart-remove').click( function() {
 
 				//console.log('uuid elemento', $(this).attr('uuid'));
-
 				const uuid = $(this).attr('uuid'); // obtiene el id del producto a eliminar
 
 				// eliminado elemento del arreglo

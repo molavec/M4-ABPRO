@@ -64,3 +64,5 @@ Cart.prototype.removeItem = function(id, quantity) {
 Cart.prototype.clear = function() {
   this.items = [];
 };
+
+export default Cart;
