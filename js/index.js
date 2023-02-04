@@ -110,10 +110,11 @@ $(document).ready(function(){
 				$("#cart-qty").html(cart.getQuantity());
 
 				// remover al padre
-				$(this).parent().remove();
+				// $(this).parent().remove();
 				
 				// Reconstruye el html del totalizador
-				const productsInCartHTML = getProductListCart(productsInCart);
+				const productsInCartHTML = getProductListCart(cart.getItems());
+				// const productsInCartHTML = getProductListCart(productsInCart);
 
 				// //console.log('productsInCartHTML', productsInCartHTML);
 				$("#totalizador .item-list").html(productsInCartHTML);
