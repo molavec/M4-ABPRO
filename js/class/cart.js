@@ -26,9 +26,9 @@ Cart.prototype.getItems = function() {
 Cart.prototype.addItem = function(product, quantity) {
   let item = this.items.find(i => i.product.id === product.id);
   if (item) {
-    item.quantity += quantity;
+    item.quantity += parseInt(quantity);
   } else {
-    this.items.push({product: product, quantity: quantity});
+    this.items.push({product: product, quantity: parseInt(quantity)});
   }
 };
 
@@ -51,11 +51,21 @@ Cart.prototype.removeItem = function(id) {
 Cart.prototype.removeItem = function(id, quantity) {
   let item = this.items.find(i => i.product.id === id);
   if (item) {
-    item.quantity -= quantity;
+    item.quantity -= parseInt(quantity);
     if (item.quantity <= 0) {
       this.removeItem(id);
     }
   }
+};
+
+/**
+ * Get the quantity items in the cart
+ * @returns {Integer} A number with sumatory of quantity in Items
+ */
+Cart.prototype.getQuantity = function() {
+  let totalQuantity = this.items.reduce((accumulator, i) => accumulator += i.quantity, 0);
+  // console.log('totalQuantity', totalQuantity);
+  return totalQuantity;
 };
 
 /**
@@ -64,3 +74,5 @@ Cart.prototype.removeItem = function(id, quantity) {
 Cart.prototype.clear = function() {
   this.items = [];
 };
+
+export default Cart;

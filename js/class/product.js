@@ -112,3 +112,5 @@ Product.prototype.getStock = function() {
 Product.prototype.setStock = function(stock) {
   this.stock = stock;
 };
+
+export default Product;
