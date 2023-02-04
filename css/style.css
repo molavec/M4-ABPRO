@@ -1005,8 +1005,9 @@ span.feature-review {margin-left: 10px;}
 
 
 .cart-image {
-    max-height: 70px;
+    max-width: 100%;
 }
+
 .stock-message{
     color: #ff0000;
     font-size: 12px;

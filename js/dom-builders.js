@@ -58,22 +58,32 @@ const getProductListCart = (itemList) => {
       return `
 
         <li>
-
-          <div class="cart-image-box">
+        
+        <div class="row">
+          <div class="col-4 cart-image-box">
             <img src="${item.product.getImage()}" class="cart-image" alt="Image ${item.product.getName()}">
           </div>
 
-          <div class="cart-info-box">
-              <p>${item.product.getName()}</p>
-              <input class="cart-quantity" type="number" value=${item.quantity}></input>
-              <p>${item.quantity} x ${item.product.getPrice()}</p>
-              <p>${item.product.getId()}</p>
+          <div class="col-8 cart-info-box py-2">
+              <p><b>${item.product.getName()}</b></p>
+              <p style="font-size: 10px;">${item.product.getId()}</p>
+              <div class="row">
+                <div class="col-4">
+                  <input class="cart-quantity pr-0" style="width: 100%" type="number" value=${item.quantity}></input>
+                </div>
+                <div class="col-8 pl-0">
+                  x ${item.product.getPrice()}
+                </div>
+              </div>
+              <div class="cart-cta-box py-2">
+                  <button class="cart-refresh pr-2" qty=${item.quantity} uuid="${item.product.getId()}"> Actualizar </button>
+                  <button class="cart-remove" qty=${item.quantity} uuid="${item.product.getId()}"> Eliminar </button>
+              </div>
+
           </div>
+        </div>
               
-          <div class="cart-cta-box">
-              <button class="cart-refresh" qty=${item.quantity} uuid="${item.product.getId()}"> Actualizar </button>
-              <button class="cart-remove" qty=${item.quantity} uuid="${item.product.getId()}"> Eliminar </button>
-          </div>
+          
 
         </li>
           <br>
