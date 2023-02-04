@@ -94,10 +94,13 @@ $(document).ready(function(){
 				//console.log('uuid elemento', $(this).attr('uuid'));
 				const uuid = $(this).attr('uuid'); // obtiene el id del producto a eliminar
 
-				// eliminado elemento del arreglo
+				// eliminado elemento del carro
+				cart.removeItem(uuid);
+				console.log('cart items', cart.getItems());
+
 				//console.log('productsInCart', productsInCart);
-				const index = productsInCart.findIndex((product) => { product.id === uuid }); // obtiene el indice en el arreglo de productos en el carro del objeto a eliminar
-				productsInCart.splice(index, 1); // elimina el producto con la funcion splice
+				// const index = productsInCart.findIndex((product) => { product.id === uuid }); // obtiene el indice en el arreglo de productos en el carro del objeto a eliminar
+				// productsInCart.splice(index, 1); // elimina el producto con la funcion splice
 				//console.log('productsInCart', productsInCart);
 
 				// disminuir el contador de la notificacion
