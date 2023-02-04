@@ -5,7 +5,6 @@ import Product from "./class/product.js";
 import Cart from "./class/cart.js";
 
 // crea un arreglo de productos a partir de la 'base de datos' catalog.js
-
 const products = catalog.map((product)=> {
 		return new Product(
 			product.code,
@@ -17,6 +16,8 @@ const products = catalog.map((product)=> {
 		);
 	}
 );
+
+const cart = new Cart();
 
 
 // --> EVENTOS
@@ -52,25 +53,38 @@ $(document).ready(function(){
 		);
 
 		// get product info
-		const product = JSON.parse($(this).attr('info').replace(/\'/g, '\"'));
-		// console.log('product', product);
+		const productInfo = JSON.parse($(this).attr('info').replace(/\'/g, '\"'));
+		//console.log('productInfo', productInfo);
+		const product = new Product(
+			productInfo.id,
+			productInfo.name,
+			productInfo.price,
+			productInfo.image,
+			productInfo.description,
+			productInfo.stock,
+		);
 
 		// Obtener la cantidad de productos
 		const quantity = $(this).parent().parent().children(".box-cantidad").children(".input-cantidad").val();
 		// console.log('quantity', quantity);
-		product.quantity = quantity;
+		//product.quantity = quantity;
 		// console.log('product con catidad', product);
 		
-		// aumentar el contador de cantidad
-		contadorProductos = contadorProductos + parseInt(quantity);
-		$("#cart-qty").html(contadorProductos);
-
 		// crea listado de productos en el carro
-		productsInCart.push(product);
+		// productsInCart.push(product);
+		cart.addItem(product, quantity);
+
+		console.log('cart items', cart.getItems());
+
+
 		const productsInCartHTML = getProductListCart(productsInCart);
 		$("#totalizador .item-list").html(productsInCartHTML);
 		// console.log('productsInCart', productsInCart);
 		// console.log('productsInCartHTML', productsInCartHTML);
+
+		// aumentar el contador de cantidad
+		contadorProductos = contadorProductos + parseInt(quantity);
+		$("#cart-qty").html(contadorProductos);
 
 		// Actualizar totales
 		updateTotals();

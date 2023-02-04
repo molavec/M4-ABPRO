@@ -26,9 +26,9 @@ Cart.prototype.getItems = function() {
 Cart.prototype.addItem = function(product, quantity) {
   let item = this.items.find(i => i.product.id === product.id);
   if (item) {
-    item.quantity += quantity;
+    item.quantity += parseInt(quantity);
   } else {
-    this.items.push({product: product, quantity: quantity});
+    this.items.push({product: product, quantity: parseInt(quantity)});
   }
 };
 
