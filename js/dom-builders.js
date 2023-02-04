@@ -29,17 +29,17 @@ const getProductListHome = (productList) => {
     return productListHome.join('\n');
 };
 
-const getProductListCart = (productList) => {
+const getProductListCart = (itemList) => {
 
-  const productListCart = productList.map( (product) => {
+  const productListCart = itemList.map( (item) => {
       return `
 
           <li>
-              <img src="${product.image}" class="cart-image" alt="Image ${product.name}">
-              <p>${product.name}</p>
-              <p>${product.quantity} x ${product.price}</p>
-              <p>${product.getId()}</p>
-              <button class="cart-remove" qty=${product.quantity} uuid="${product.getId()}"> Eliminar </button>
+              <img src="${item.product.getImage()}" class="cart-image" alt="Image ${item.product.getName()}">
+              <p>${item.product.getName()}</p>
+              <p>${item.quantity} x ${item.product.getPrice()}</p>
+              <p>${item.product.getId()}</p>
+              <button class="cart-remove" qty=${item.quantity} uuid="${item.product.getId()}"> Eliminar </button>
           </li>
           <br>
 

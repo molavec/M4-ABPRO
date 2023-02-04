@@ -73,11 +73,10 @@ $(document).ready(function(){
 		// crea listado de productos en el carro
 		// productsInCart.push(product);
 		cart.addItem(product, quantity);
-
 		console.log('cart items', cart.getItems());
 
 
-		const productsInCartHTML = getProductListCart(productsInCart);
+		const productsInCartHTML = getProductListCart(cart.getItems());
 		$("#totalizador .item-list").html(productsInCartHTML);
 		// console.log('productsInCart', productsInCart);
 		// console.log('productsInCartHTML', productsInCartHTML);
