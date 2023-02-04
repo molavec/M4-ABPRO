@@ -59,6 +59,16 @@ Cart.prototype.removeItem = function(id, quantity) {
 };
 
 /**
+ * Get the quantity items in the cart
+ * @returns {Integer} A number with sumatory of quantity in Items
+ */
+Cart.prototype.getQuantity = function() {
+  let totalQuantity = this.items.reduce((accumulator, i) => accumulator += i.quantity, 0);
+  // console.log('totalQuantity', totalQuantity);
+  return totalQuantity;
+};
+
+/**
  * Clear all items from the cart
  */
 Cart.prototype.clear = function() {

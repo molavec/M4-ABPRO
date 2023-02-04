@@ -82,8 +82,9 @@ $(document).ready(function(){
 		// console.log('productsInCartHTML', productsInCartHTML);
 
 		// aumentar el contador de cantidad
-		contadorProductos = contadorProductos + parseInt(quantity);
-		$("#cart-qty").html(contadorProductos);
+		// contadorProductos = contadorProductos + parseInt(quantity);
+		// $("#cart-qty").html(contadorProductos);
+		$("#cart-qty").html(cart.getQuantity());
 
 		// Actualizar totales
 		updateTotals();
@@ -104,8 +105,9 @@ $(document).ready(function(){
 				//console.log('productsInCart', productsInCart);
 
 				// disminuir el contador de la notificacion
-				contadorProductos = contadorProductos - $(this).attr('qty');
-				$("#cart-qty").html(contadorProductos);
+				// contadorProductos = contadorProductos - $(this).attr('qty');
+				// $("#cart-qty").html(contadorProductos);
+				$("#cart-qty").html(cart.getQuantity());
 
 				// remover al padre
 				$(this).parent().remove();
