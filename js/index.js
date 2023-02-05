@@ -9,6 +9,7 @@ import Cart from "./class/cart.js";
  * Actualiza los totales en el carro
  */
 const updateTotals = () => {
+	// console.log('updateTotals', cart.getTotal());
 	$("#total-neto").html(`$ ${cart.getTotal()}`);
 	$("#iva").html(`$ ${cart.getTax()}`);
 	$("#total").html(`$ ${cart.getTotal() + cart.getTax()}`);
@@ -56,7 +57,7 @@ $(document).ready(function(){
 				1000
 		);
 
-		// Obtiene la información del producto
+		// Obtiene la información del producto y crea el objeto producto
 		const productInfo = JSON.parse($(this).attr('info').replace(/\'/g, '\"'));
 
 		const product = new Product(
@@ -127,8 +128,8 @@ $(document).ready(function(){
 															.val();
 
 			// Actualiza elemento en el objeto carro.
-			if(quantity > 0 && quantity <= product.getStock()){
-				cart.updateItem(product, quantity);
+			if(quantity >= 0 && quantity <= product.getStock()){
+				cart.updateItem(product.getId(), quantity);
 			} else if( quantity > product.getStock())  {
 				// Añade mensaje que se ha superado el stock
 				$(this).parent()
@@ -144,7 +145,7 @@ $(document).ready(function(){
 								.children(".cart-quantity-input")
 								.val(product.getStock());
 				// Añade el stock
-				cart.updateItem(product, product.getStock());
+				cart.updateItem(product.getId(), product.getStock());
 			} else {
 				// actualiza el valor a cero
 				$(this).parent()
@@ -168,7 +169,7 @@ $(document).ready(function(){
 				$(this).parent().parent().parent().remove();
 			}
 
-			// Actualiza totales
+			// Actualizar totales
 			updateTotals();
 
 			// Aleta que el carro ha sido actualizado
