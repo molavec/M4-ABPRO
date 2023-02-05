@@ -21,17 +21,17 @@ const getProductListHome = (productList) => {
         return `
           <div class="add-to-cart-box row my-4">
             <div class="box-cantidad col-md-4 pl-2">
-                <input class="input-cantidad" type="number" placeholder="cantidad" value="1"/>
+              <input class="input-cantidad" type="number" placeholder="cantidad" min="0" value="1"/>
             </div>
             <div class="box-cta col-md-8">
-                <button 
-                  class="add-button btn btn-outline-success btn-sm" 
-                  info="${JSON.stringify(product).replace(/\"/g, '\'')}" 
-                  type="button">Añadir</button>
-                <button 
-                  class="added-button btn btn-outline-success btn-sm" 
-                  type="button" 
-                  style="display:none;">Añadido</button>
+              <button 
+                class="add-button btn btn-outline-success btn-sm" 
+                info="${JSON.stringify(product).replace(/\"/g, '\'')}" 
+                type="button">Añadir</button>
+              <button 
+                class="added-button btn btn-outline-success btn-sm" 
+                type="button" 
+                style="display:none;">Añadido</button>
             </div>
           </div>
         `;

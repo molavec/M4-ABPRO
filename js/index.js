@@ -76,8 +76,34 @@ $(document).ready(function(){
 														.val();
 
 		// Añade productos al carro
-		cart.addItem(product, quantity);
+		if(quantity > 0 && quantity <= product.getStock()){
+			cart.addItem(product, quantity);
+		} else if( quantity > product.getStock())  {
+			// Añade mensaje que se ha superado el stock
+			$(this).parent()
+							.parent()
+							.parent()
+							.children(".single-feature-txt")
+							.children(".stock-message")
+							.html(`Sólo hay ${product.getStock()} dispoibles.`);
 
+			// actualiza el valor al stock disponible
+			$(this).parent()
+							.parent()
+							.children(".box-cantidad")
+							.children(".input-cantidad")
+							.val(product.getStock());
+			// Añade el stock
+			cart.addItem(product, product.getStock());
+		} else {
+			// actualiza el valor a cero
+			$(this).parent()
+							.parent()
+							.children(".box-cantidad")
+							.children(".input-cantidad")
+							.val(0);
+		}
+		
 		// Actualiza elementos del carro
 		const productsInCartHTML = getProductListCart(cart.getItems());
 		$("#totalizador .item-list").html(productsInCartHTML);
