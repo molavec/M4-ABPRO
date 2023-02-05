@@ -43,8 +43,6 @@ $(document).ready(function(){
 		const addedButton = $(this).siblings(".added-button");
 		addButton.toggle();
 		addedButton.toggle();
-		
-
 		setTimeout(
 				function () {
 						addButton.toggle();
@@ -148,7 +146,13 @@ $(document).ready(function(){
 			// $("#cart-qty").html(contadorProductos);
 			$("#cart-qty").html(cart.getQuantity());
 
-			$('cart-alert').html('<span class="badge rounded-pill text-bg-warning">Carro Actualizado</span>');
+			$('.cart-alert').html('<span class="badge rounded-pill text-bg-warning">Carro Actualizado</span>');
+			setTimeout(
+				function () {
+					$('.cart-alert').html('');
+				},
+				2000
+			);
 
 			// remover al padre
 			// $(this).parent().remove();
