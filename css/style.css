@@ -759,6 +759,14 @@ span.feature-review {margin-left: 10px;}
     border-radius: 0px;
 }
 
+.feature .added-button {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e99c2e;
+    color: #e99c2e;
+    border-radius: 0px;
+}
+
 /*.single-feature-txt */
 
 /*-------------------------------------       

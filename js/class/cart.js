@@ -8,6 +8,9 @@ function Cart() {
    * @property {Array} items - An array of shopping cart items
    */
   this.items = [];
+
+  this.TAX = 0.19;
+  this.SHIPPING_COMMISSION = 0.05;
 }
 
 /**
@@ -23,8 +26,6 @@ Cart.prototype.getItems = function() {
  */
 Cart.prototype.getItem = function(id) {
   let item = this.items.find(i => {
-    console.log('i.product.id',i.product.getId());
-    console.log('id',id);
     return i.product.id === id 
   });
   return item;
@@ -61,10 +62,6 @@ Cart.prototype.removeItem = function(id) {
  */
 Cart.prototype.updateItem = function(id, quantity) {
   let item = this.items.find(i => i.product.id === id);
-  console.log("id", id)
-  console.log("quantity", quantity)
-  console.log("item", item)
-
   if (item) {
     item.quantity = parseInt(quantity);
     if (item.quantity <= 0) {
@@ -88,6 +85,38 @@ Cart.prototype.getQuantity = function() {
  */
 Cart.prototype.clear = function() {
   this.items = [];
+};
+
+/**
+ * Get Total of Items
+ */
+Cart.prototype.getTotal = function() {
+  const value = this.items.reduce(
+    (acumulador, item) => {
+        // console.log('acumulador', acumulador)
+        // console.log('item.product.price', item.product.price);
+        // console.log('item.product.quantity', item.product.quantity);
+        const aux = parseInt(acumulador) + parseInt(item.product.price) * parseInt(item.quantity)
+        // console.log('aux', aux);
+        return aux;
+    }, 0
+  );
+  // console.log('value', value)
+  return value;
+};
+
+/**
+ * Get Tax of items
+ */
+Cart.prototype.getTax = function() {
+  return this.getTotal() * (this.TAX);
+};
+
+/**
+ * Get Shipping Comision
+ */
+Cart.prototype.getShippingCost = function() {
+  return this.getTotal() * (1 + this.SHIPPING_COMMISSION);
 };
 
 export default Cart;

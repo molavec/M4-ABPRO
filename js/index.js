@@ -4,6 +4,18 @@ import { getProductListHome, getProductListCart } from "./dom-builders.js";
 import Product from "./class/product.js";
 import Cart from "./class/cart.js";
 
+
+/**
+ * Actualiza los totales en el carro
+ */
+const updateTotals = () => {
+	$("#total-neto").html(`$ ${cart.getTotal()}`);
+	$("#iva").html(`$ ${cart.getTax()}`);
+	$("#total").html(`$ ${cart.getTotal() + cart.getTax()}`);
+	$("#shipping").html(`$ ${cart.getShippingCost()}`);
+	$("#total-with-shipping").html(`$ ${cart.getTotal() + cart.getTax() + cart.getShippingCost()}`);
+}
+
 // crea un arreglo de productos a partir de la 'base de datos' catalog.js
 const products = catalog.map((product)=> {
 		return new Product(
@@ -17,28 +29,21 @@ const products = catalog.map((product)=> {
 	}
 );
 
+// Crea el objeto carro.
 const cart = new Cart();
 
 
-// --> EVENTOS
-//variable que almacena los productos anadidos al carro
-var productsInCart = [];
-var contadorProductos = 0;
-
+// --> MANEJO DEL DOM
 $(document).ready(function(){
 	"use strict";
 
-	// add products from products
+	// --> AÑADE PRODUCTOS EN EL DOM
 	$('#products .feature-content .row').html(getProductListHome(products));
 
-	// acciones de los botones anadir al carro 
+	// --> CLICK ADD-TO-CART: Acciones botón anadir al carro 
 	$('.add-to-cart-box .add-button').click( function() {
-		// console.log('boton anadir', this);
-		// console.log('boton anadir', $(this));
-		// console.log('info', $(this).attr('info'));
-		// console.log('info parsed', JSON.parse($(this).attr('info').replace(/\'/g, '\"')));
 
-		// Cambiar el estado de boton anadido, esconde boton actual
+		// Cambia el estado de boton añadido por 1 segundo
 		const addButton = $(this);
 		const addedButton = $(this).siblings(".added-button");
 		addButton.toggle();
@@ -51,9 +56,9 @@ $(document).ready(function(){
 				1000
 		);
 
-		// get product info
+		// Obtiene la información del producto
 		const productInfo = JSON.parse($(this).attr('info').replace(/\'/g, '\"'));
-		//console.log('productInfo', productInfo);
+
 		const product = new Product(
 			productInfo.id,
 			productInfo.name,
@@ -64,88 +69,57 @@ $(document).ready(function(){
 		);
 
 		// Obtener la cantidad de productos
-		const quantity = $(this).parent().parent().children(".box-cantidad").children(".input-cantidad").val();
-		// console.log('quantity', quantity);
-		//product.quantity = quantity;
-		// console.log('product con catidad', product);
-		
-		// crea listado de productos en el carro
-		// productsInCart.push(product);
+		const quantity = $(this).parent()
+														.parent()
+														.children(".box-cantidad")
+														.children(".input-cantidad")
+														.val();
+
+		// Añade productos al carro
 		cart.addItem(product, quantity);
-		// console.log('cart items', cart.getItems());
 
-
+		// Actualiza elementos del carro
 		const productsInCartHTML = getProductListCart(cart.getItems());
 		$("#totalizador .item-list").html(productsInCartHTML);
-		// console.log('productsInCart', productsInCart);
-		// console.log('productsInCartHTML', productsInCartHTML);
-
-		// aumentar el contador de cantidad
-		// contadorProductos = contadorProductos + parseInt(quantity);
-		// $("#cart-qty").html(contadorProductos);
+		
+		// Actualiza el contador del ícono del carro
 		$("#cart-qty").html(cart.getQuantity());
 
 		// Actualizar totales
 		updateTotals();
 
-		// Add event to remove button
-		$('#totalizador .cart-remove').click( function() {
-
-				//console.log('uuid elemento', $(this).attr('uuid'));
-				const uuid = $(this).attr('uuid'); // obtiene el id del producto a eliminar
-
-				// eliminado elemento del carro
-				cart.removeItem(uuid);
-				console.log('cart items', cart.getItems());
-
-				//console.log('productsInCart', productsInCart);
-				// const index = productsInCart.findIndex((product) => { product.id === uuid }); // obtiene el indice en el arreglo de productos en el carro del objeto a eliminar
-				// productsInCart.splice(index, 1); // elimina el producto con la funcion splice
-				//console.log('productsInCart', productsInCart);
-
-				// disminuir el contador de la notificacion
-				// contadorProductos = contadorProductos - $(this).attr('qty');
-				// $("#cart-qty").html(contadorProductos);
-				$("#cart-qty").html(cart.getQuantity());
-
-				// remover al padre
-				// $(this).parent().remove();
-				
-				// Reconstruye el html del totalizador
-				const productsInCartHTML = getProductListCart(cart.getItems());
-				// const productsInCartHTML = getProductListCart(productsInCart);
-
-				// //console.log('productsInCartHTML', productsInCartHTML);
-				$("#totalizador .item-list").html(productsInCartHTML);
-
-				// recalcular totales
-				updateTotals();
-		});
-
-		// Add event to update button
+		// -> CLICK UPDATE ITEM IN CART: Acciones botón actualizar
 		$('#totalizador .cart-refresh').click( function() {
 
-			//console.log('uuid elemento', $(this).attr('uuid'));
-			const uuid = $(this).attr('uuid'); // obtiene el id del producto a eliminar
+			// Obtiene el id y la cantidad del producto a actualizar
+			const uuid = $(this).attr('uuid');
+			const quantity = $(this).parent()
+															.parent()
+															.children(".cart-info-box")
+															.children(".cart-quantity")
+															.children(".cart-quantity-input")
+															.val();
 
-			const quantity = $(this).parent().parent().children(".cart-info-box").children(".cart-quantity").children(".cart-quantity-input").val();
-
-			console.log('quantity', quantity);
-
-			// eliminado elemento del carro
+			// Actualiza elemento en el objeto carro.
 			cart.updateItem(uuid, quantity);
-			console.log('cart items', cart.getItems());
 
-			//console.log('productsInCart', productsInCart);
-			// const index = productsInCart.findIndex((product) => { product.id === uuid }); // obtiene el indice en el arreglo de productos en el carro del objeto a eliminar
-			// productsInCart.splice(index, 1); // elimina el producto con la funcion splice
-			//console.log('productsInCart', productsInCart);
+			// Actualiza el contador del ícono del carro
+			if(cart.getQuantity() > 0) {
+				$("#cart-qty").html(cart.getQuantity());
+			} else {
+				$("#cart-qty").html('');
+				$("#totalizador .item-list").html('<p>El carro está vacío.</p>');
+			}
 
-			// disminuir el contador de la notificacion
-			// contadorProductos = contadorProductos - $(this).attr('qty');
-			// $("#cart-qty").html(contadorProductos);
-			$("#cart-qty").html(cart.getQuantity());
+			// Remueve el item del DOM si el quantity es cero
+			if(quantity <= 0) {
+				$(this).parent().parent().parent().remove();
+			}
 
+			// Actualiza totales
+			updateTotals();
+
+			// Aleta que el carro ha sido actualizado
 			$('.cart-alert').html('<span class="badge rounded-pill text-bg-warning">Carro Actualizado</span>');
 			setTimeout(
 				function () {
@@ -154,42 +128,50 @@ $(document).ready(function(){
 				2000
 			);
 
-			// remover al padre
-			// $(this).parent().remove();
-			
-			// Reconstruye el html del totalizador
-			// const productsInCartHTML = getProductListCart(cart.getItems());
-			// const productsInCartHTML = getProductListCart(productsInCart);
+		});
 
-			// //console.log('productsInCartHTML', productsInCartHTML);
-			// $("#totalizador .item-list").html(productsInCartHTML);
+		// -> CLICK DETETE ITEM IN CART: Acciones botón eliminar
+		$('#totalizador .cart-remove').click( function() {
 
-			// recalcular totales
+			// Obtiene el id del producto a eliminar
+			const uuid = $(this).attr('uuid'); 
+
+			// Eliminado elemento del carro
+			cart.removeItem(uuid);
+
+			// Actualiza el contador del ícono del carro
+			if(cart.getQuantity() > 0) {
+				$("#cart-qty").html(cart.getQuantity());
+			} else {
+				$("#cart-qty").html('');
+				$("#totalizador .item-list").html('<p>El carro está vacío.</p>');
+			}
+
+			// Remueve el item del DOM
+			$(this).parent().parent().parent().remove();
+
+			// Actualiza totales
 			updateTotals();
-	});
+		});
 
 	});
 
-	// acciones para limpiar el carro
+	// -> CLICK CLEAN CART: Acciones para limpiar del carro.
 	$('#clean-cart').click( function(){
+
+		// Elimina los items del carro
 		cart.clear();
-		$("#totalizador .item-list").html('');
+
+		// Actualiza el contador del ícono del carro
+		$("#cart-qty").html('');
+
+		// Actualiza lista elementos del carro.
+		$("#totalizador .item-list").html('<p>El carro está vacío.</p>');
+
+		// Actualiza totales
+		updateTotals();
 
 	});
 
 });
 
-const updateTotals = () => {
-
-	const totalWithoutTax = getTotalWithoutTax(productsInCart);
-	const tax = getTax(productsInCart);
-	const totalWithTax = getTotalWithTax(productsInCart);
-	const shippingCost = getShippingCost(getTotalWithTax(productsInCart)); 
-	const totalWithShipping = getTotalWithTax(productsInCart) + getShippingCost(getTotalWithTax(productsInCart));
-
-	$("#total-neto").html(totalWithoutTax);
-	$("#iva").html(tax);
-	$("#total").html(totalWithTax);
-	$("#shipping").html(shippingCost);
-	$("#total-with-shipping").html(totalWithShipping);
-}
