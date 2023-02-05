@@ -102,6 +102,7 @@ $(document).ready(function(){
 							.children(".box-cantidad")
 							.children(".input-cantidad")
 							.val(0);
+			return;
 		}
 		
 		// Actualiza elementos del carro
@@ -118,7 +119,6 @@ $(document).ready(function(){
 		$('#totalizador .cart-refresh').click( function() {
 
 			// Obtiene el id y la cantidad del producto a actualizar
-			const uuid = $(this).attr('uuid');
 			const quantity = $(this).parent()
 															.parent()
 															.children(".cart-info-box")
@@ -127,7 +127,33 @@ $(document).ready(function(){
 															.val();
 
 			// Actualiza elemento en el objeto carro.
-			cart.updateItem(uuid, quantity);
+			if(quantity > 0 && quantity <= product.getStock()){
+				cart.updateItem(product, quantity);
+			} else if( quantity > product.getStock())  {
+				// Añade mensaje que se ha superado el stock
+				$(this).parent()
+								.parent()
+								.children(".stock-message")
+								.html(`Sólo hay ${product.getStock()} dispoibles.`);
+	
+				// actualiza el valor al stock disponible
+				$(this).parent()
+								.parent()
+								.children(".cart-info-box")
+								.children(".cart-quantity")
+								.children(".cart-quantity-input")
+								.val(product.getStock());
+				// Añade el stock
+				cart.updateItem(product, product.getStock());
+			} else {
+				// actualiza el valor a cero
+				$(this).parent()
+								.parent()
+								.children(".box-cantidad")
+								.children(".input-cantidad")
+								.val(0);
+				return;
+			}
 
 			// Actualiza el contador del ícono del carro
 			if(cart.getQuantity() > 0) {
@@ -179,6 +205,41 @@ $(document).ready(function(){
 			// Actualiza totales
 			updateTotals();
 		});
+
+	});
+
+	// -> CLICK BUY CART: Acciones para limpiar del carro.
+	$('#buy-cart').click( function(){
+
+		// Actualiza el stock de los productos
+		cart.getItems().forEach((item)=>{
+			const index = products.findIndex((product) => (product.getId() === item.product.getId()));
+			products[index].setStock(products[index].getStock() - item.quantity);
+		});
+		
+		// --> ACTUALIZA PRODUCTOS EN EL DOM
+		$('#products .feature-content .row').html(getProductListHome(products));
+
+		// Elimina los items del carro
+		cart.clear();
+
+		// Actualiza el contador del ícono del carro
+		$("#cart-qty").html('');
+
+		// Actualiza lista elementos del carro.
+		$("#totalizador .item-list").html('<p>El carro está vacío.</p>');
+
+		// Actualiza totales
+		updateTotals();
+
+		// Alerta de que productos han sido comprados
+		$('.cart-alert').html('<span class="badge rounded-pill text-bg-success">Compra realizada éxitosamente!</span>');
+		setTimeout(
+			function () {
+				$('.cart-alert').html('');
+			},
+			20000
+		);
 
 	});
 

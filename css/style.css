@@ -203,7 +203,8 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 /*badge*/
 .badge {
     background-color: #e99c2e;
-    border: 2px solid #e99c2e;
+    padding: 8px 10px;
+    //border: 2px solid #e99c2e;
 }
 .attr-nav > ul > li > a span.badge {
     margin-top: -25px;
