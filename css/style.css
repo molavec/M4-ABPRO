@@ -739,7 +739,7 @@ span.feature-review {margin-left: 10px;}
 .single-feature-txt p {font-size: 14px;}
 .single-feature-txt h3 a ,.single-blog-txt h2 a{
     color: #5f5b57;
-    margin: 10px 0px 15px;
+    margin: 10px 0px 5px;
 }
 .single-feature-txt h5 {
     color:  #5f5b57;
@@ -1011,4 +1011,5 @@ span.feature-review {margin-left: 10px;}
 .stock-message{
     color: #ff0000;
     font-size: 12px;
+    min-height: 26px;
 }

@@ -1,15 +1,28 @@
+const getStockAlert = (stock) => {
+  if(stock == 0) {
+   return 'No hay stock';
+  } else if (stock == 3) {
+    return 'Último disponible';
+  } else if (stock <= 3) {
+    return `Últimos ${stock} disponibles`;
+  } else {
+    return '';
+  }
+};
+
+
+
 const getProductListHome = (productList) => {
 
   const productListHome = productList.map((product) => {
 
-    let productBlock =  `<div id="${product.getId()}" class="col-sm-3">`;
-
-    const productInfo = `
-    
+    const productBlock = `
+      <div id="${product.getId()}" class="col-sm-3">
         <div class="single-feature">
           <img src="${product.getImage()}" alt="feature image">
           <div class="single-feature-txt text-center">
             <h3><a href="#">${product.getName()}</a></h3>
+            <p class="stock-message"> ${getStockAlert(product.getStock())} </p>
             <h5>$${product.getPrice()}</h5>
             <p class="">${product.getId()}</p>
             <p class="text-left">${product.getDescription()}</p>
@@ -25,30 +38,11 @@ const getProductListHome = (productList) => {
             </div>
           </div>
         </div>
-    `
-
-    productBlock += productInfo;
-
-    let productStock = '';
-
-    if(product.getStock()==0){
-      productStock= `<p class="stock-message"> No hay stock</p>`
-    }
-    else if (product.getStock()<=3){
-      productStock= `<p class="stock-message"> Disponible ${product.getStock()} </p>`
-    } else {
-      productStock= `<p class="stock-message"></p>`
-    }
-
-    productBlock += productStock;
-
-    productBlock += `</div>`;
-  
+      </div>
+    `;
     return productBlock;
-
-
-
     });
+
     return productListHome.join('\n');
 };
 
