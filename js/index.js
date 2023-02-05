@@ -130,7 +130,9 @@ $(document).ready(function(){
 			//console.log('uuid elemento', $(this).attr('uuid'));
 			const uuid = $(this).attr('uuid'); // obtiene el id del producto a eliminar
 
-			const quantity = $(this).parent().parent().children(".cart-info-box").children(".cart-quantity").val();
+			const quantity = $(this).parent().parent().children(".cart-info-box").children(".cart-quantity").children(".cart-quantity-input").val();
+
+			console.log('quantity', quantity);
 
 			// eliminado elemento del carro
 			cart.updateItem(uuid, quantity);
@@ -145,6 +147,8 @@ $(document).ready(function(){
 			// contadorProductos = contadorProductos - $(this).attr('qty');
 			// $("#cart-qty").html(contadorProductos);
 			$("#cart-qty").html(cart.getQuantity());
+
+			$('cart-alert').html('<span class="badge rounded-pill text-bg-warning">Carro Actualizado</span>');
 
 			// remover al padre
 			// $(this).parent().remove();
