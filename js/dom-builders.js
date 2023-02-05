@@ -1,4 +1,4 @@
-const getStockAlert = (stock) => {
+const getStockMessage = (stock) => {
   if(stock == 0) {
    return 'No hay stock';
   } else if (stock == 1) {
@@ -9,8 +9,6 @@ const getStockAlert = (stock) => {
     return '';
   }
 };
-
-
 
 const getProductListHome = (productList) => {
 
@@ -46,7 +44,7 @@ const getProductListHome = (productList) => {
           <img src="${product.getImage()}" alt="feature image">
           <div class="single-feature-txt text-center">
             <h3><a href="#">${product.getName()}</a></h3>
-            <p class="stock-message"> ${getStockAlert(product.getStock())} </p>
+            <p class="stock-message"> ${getStockMessage(product.getStock())} </p>
             <h5>$${product.getPrice()}</h5>
             <p class="">${product.getId()}</p>
             <p class="text-left">${product.getDescription()}</p>
@@ -78,7 +76,7 @@ const getProductListCart = (itemList) => {
 
             <div class="col-8">
               <p class='cart-product-title'><b>${item.product.getName()}</b></p>
-              <p class="stock-message"> ${getStockAlert(item.product.getStock())} </p>
+              <p class="stock-message"> ${getStockMessage(item.product.getStock())} </p>
               <p style="font-size: 10px;">${item.product.getId()}</p>
               <div class="row cart-info-box">
                 <div class="col-4 cart-quantity">
