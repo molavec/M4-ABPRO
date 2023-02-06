@@ -141,7 +141,7 @@ nav.navbar.bootsnav {
     /* padding: 45px 0px; */
     text-transform:capitalize;
 }
-//.navbar-header a.navbar-brand span{display: inline-block;color:#e99c2e;text-transform:capitalize;}
+/*.navbar-header a.navbar-brand span{display: inline-block;color:#e99c2e;text-transform:capitalize;}*/
 
 .wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:hover,.wrap-sticky nav.navbar.bootsnav.sticked .navbar-header a.navbar-brand:focus {padding:30px 0px;}
 /*.navbar-brand*/
@@ -204,7 +204,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 .badge {
     background-color: #e99c2e;
     padding: 8px 10px;
-    //border: 2px solid #e99c2e;
+    /*border: 2px solid #e99c2e;*/
 }
 .attr-nav > ul > li > a span.badge {
     margin-top: -25px;
