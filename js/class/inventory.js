@@ -9,10 +9,21 @@ class Inventory {
   /**
    * Returns the array of products
    * 
-   * @returns {Array} products
+   * @returns {Product[]} products
    */
   getProducts() {
     return this.products;
+  }
+
+  /**
+   * Obtain product by id
+   * @param {*} productId product id 
+   * @returns product found
+   */
+  getProductById(productId) {
+    return this.products.find((product) => {
+      return product.getId() === productId;
+    });
   }
 
   /**
@@ -49,6 +60,19 @@ class Inventory {
     if (index !== -1) {
       this.products[index] = product;
     }
+  }
+
+  /**
+   * Remove quantity from the stock for a product selected from some id. 
+   * @param {*} productId product id
+   * @param {*} quantity quantity to be removed from stock
+   * @returns new stock quantity
+   */
+  consumeStock(productId, quantity) {
+    const product = this.products.getProductById(productId);
+    const newStock = product.getStock() - parseInt(quantity); 
+    product.setStock((newStock >= 0) ? newStock : 0 );
+    return product.getStock();
   }
 
 

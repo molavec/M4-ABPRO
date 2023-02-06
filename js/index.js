@@ -3,6 +3,7 @@ import { getProductListHome, getProductListCart } from "./dom-builders.js";
 
 import Product from "./class/product.js";
 import Cart from "./class/cart.js";
+import Inventory from "./class/inventory.js";
 
 
 /**
@@ -33,13 +34,16 @@ const products = catalog.map((product)=> {
 // Crea el objeto carro.
 const cart = new Cart();
 
+// Crea el objeto inventory.
+const inventory = new Inventory(products);
+
 
 // --> MANEJO DEL DOM
 $(document).ready(function(){
 	"use strict";
 
 	// --> AÑADE PRODUCTOS EN EL DOM
-	$('#products .feature-content .row').html(getProductListHome(products));
+	$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
 
 	// --> CLICK ADD-TO-CART: Acciones botón anadir al carro 
 	$('.add-to-cart-box .add-button').click( function() {
