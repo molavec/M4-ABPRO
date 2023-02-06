@@ -50,6 +50,46 @@ class Inventory {
       this.products[index] = product;
     }
   }
+
+
+  /**
+   * Obtain products by a searchText that match with name, description or label
+   * @param {String} searchText search Text
+   * @returns products array that matched with search text.
+   */
+  searchProducts(searchText) {
+    const products = [];
+    //TODO: search products by name, description or label
+    return products;
+  }
+
+
+  /**
+   * Obtain products filtered by min and max price
+   * @param {Number} minPrice minimal price
+   * @param {Number} searchText maximal price
+   * @returns products array in range price.
+   */
+  filterByPrice(minPrice = 0, maxPrice) {
+    const products = [];
+    //TODO: search products in price range
+    return products;
+  }
+
+
+  /**
+   * Obtain filtered by Category
+   * @param {String} categoryId categoryId
+   * @returns products array filtered by category.
+   */
+  filterByCategory(categoryId) {
+    const products = [];
+    //TODO: search products by category Id
+    return products;
+  }
+
 }
+
+
 
 export default Inventory;
