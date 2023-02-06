@@ -41,3 +41,5 @@ class InventoryStorage {
     localStorage.setItem("inventory", JSON.stringify(inventory));
   }
 }
+
+export default InventoryStorage;
