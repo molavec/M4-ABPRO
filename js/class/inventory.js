@@ -82,8 +82,14 @@ class Inventory {
    * @returns products array that matched with search text.
    */
   searchProducts(searchText) {
-    const products = [];
-    //TODO: search products by name, description or label
+    //TODO: search products by name, description or 
+    const product = this.products.filter((product)=>{
+      console.log(product.getName())
+      console.log(product.getDescription())
+      // console.log(product.getLabels())
+      // TODO: falta comparar las etiquetas
+      return product.getName() === searchText || product.getDescription() === searchText 
+    })
     return products;
   }
 
@@ -97,6 +103,9 @@ class Inventory {
   filterByPrice(minPrice = 0, maxPrice) {
     const products = [];
     //TODO: search products in price range
+    // console.log('this.products', this.products);
+    // this.products.filter(()=>{})
+    // Carlos Vezquez
     return products;
   }
 

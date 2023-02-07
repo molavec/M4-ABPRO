@@ -89,81 +89,50 @@
 
 		</header>
 
-		<section id="home">
+		<section id="inventory">
 			
-			<div class="position-relative overflow-hidden text-left bg-light">
-				<div class="p-lg-5 mx-auto my-5">
-					<h1 class="display-4 fw-normal">Tecno Chile</h1>
-					<p class="lead fw-normal">Productos tecnológicos.</p>
-					<a class="btn-cart welcome-add-cart sofa-collection-btn text-center" href="#products">Ver Productos</a>
-				</div>
-				<div class="product-device shadow-sm d-none d-md-block"></div>
-				<div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
-			</div>
-		</section>
+			<!-- TODO: crear un listado de productos -->
 
-		<!--products start -->
-		<section id="products" class="feature">
 			<div class="container">
-				<div class="section-header">
-					<h2>Nuestros Productos</h2>
-				</div><!--/.section-header-->
+				<h1>Lista de productos</h1>
+			</div>
+			
+			<div class="container">
+				<table class="table">
+					<thead>
+						<tr>
+							<th scope="col">#</th>
+							<th scope="col">First</th>
+							<th scope="col">Last</th>
+							<th scope="col">Handle</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<th scope="row">1</th>
+							<td>Mark</td>
+							<td>Otto</td>
+							<td>@mdo</td>
+						</tr>
+						<tr>
+							<th scope="row">2</th>
+							<td>Jacob</td>
+							<td>Thornton</td>
+							<td>@fat</td>
+						</tr>
+						<tr>
+							<th scope="row">3</th>
+							<td colspan="2">Larry the Bird</td>
+							<td>@twitter</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
 
-				
-				<div class="feature-content">
-					<div class="row">
-						<!-- PRODUCTS GOES HERE -->
-					</div>
-				</div>
-			</div><!--/.container-->
-
+			
+			
 		</section>
-		<!--products end -->
 
-		<!-- offcanvaz start -->
-		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
-
-			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasExampleLabel">Tus Productos</h5>
-				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-			</div>
-
-			<div class="offcanvas-body">				
-		
-				<!-- totalizador -->
-				<div id="totalizador" class="container" id="listaproductos">
-					<div class="cart-alert"></div>
-					<ul class="item-list">
-						<!-- items in cart here -->
-						<p>El carro está vacío.</p>
-					</ul>
-		
-					<hr>
-					
-					<div class="cart-alert"></div>
-
-					<div class="totales">
-						<p class="neto">Total Neto: <span id="total-neto">$ 0</span></p>
-						<p>IVA: <span id="iva">$ 0</span> </p>
-						<p>Total: <span id="total">$ 0</span> </p>
-						<p>Despacho: <span id="shipping">$ 0</span> </p>
-						<p>Total con despacho: <span id="total-with-shipping">$ 0</span>
-						</p>
-					</div>
-
-					<div class="container mt-3">
-						<button id="buy-cart" type="button" class="btn btn-primary">
-							Comprar
-						</button>
-						<button id="clean-cart" type="button" class="btn btn-secondary">
-							Limpiar Carro
-						</button>
-					</div>
-		
-				</div>
-			</div>
-		</div>
-		<!-- offcanvaz end -->
 
 		<!--footer start-->
 		<footer id="footer"  class="footer">
