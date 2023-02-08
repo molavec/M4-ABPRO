@@ -68,8 +68,8 @@ class Inventory {
    * @param {*} quantity quantity to be removed from stock
    * @returns new stock quantity
    */
-  consumeStock(productId, quantity) {
-    const product = this.products.getProductById(productId);
+  removeStock(productId, quantity) {
+    const product = this.getProductById(productId);
     const newStock = product.getStock() - parseInt(quantity); 
     product.setStock((newStock >= 0) ? newStock : 0 );
     return product.getStock();

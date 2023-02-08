@@ -218,12 +218,11 @@ $(document).ready(function(){
 
 		// Actualiza el stock de los productos
 		cart.getItems().forEach((item)=>{
-			const index = products.findIndex((product) => (product.getId() === item.product.getId()));
-			products[index].setStock(products[index].getStock() - item.quantity);
+			inventory.removeStock(item.product.getId(), item.quantity);
 		});
 		
 		// --> ACTUALIZA PRODUCTOS EN EL DOM
-		$('#products .feature-content .row').html(getProductListHome(products));
+		$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
 
 		// Elimina los items del carro
 		cart.clear();
