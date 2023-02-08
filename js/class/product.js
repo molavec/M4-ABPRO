@@ -27,7 +27,6 @@ class Product {
   getId() {
     return this.id;
   }
-
   /**
    * Setter para el id
    * @param {number} id
@@ -115,6 +114,22 @@ class Product {
   setStock(stock) {
     this.stock = stock;
   }
+
+  /**
+   * getter para los labels
+   * @returns un arreglo de etiquetas del producto
+   */
+  getlabels(){
+    return this.labels
+  }
+/**
+ * setter para el categoria
+ * @param {string} 
+ */
+  setlabels(label){
+    this.labels=label
+  }
+
 }
 
 export default Product;

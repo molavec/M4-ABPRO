@@ -11,7 +11,11 @@ class Category {
   setId(id){
     this.id = id;
   };
-  getName(){};
-  setName(){};
+  getName(){
+    return this.name
+  };
+  setName(name){
+    this.name=name
+  };
   
 }
