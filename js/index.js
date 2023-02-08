@@ -1,4 +1,4 @@
-import catalog from "./catalog.js";
+import catalog from "./data/catalog.js";
 import { getProductListHome, getProductListCart } from "./dom-builders.js";
 
 import Product from "./class/product.js";
