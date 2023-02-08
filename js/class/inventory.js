@@ -118,7 +118,7 @@ class Inventory {
   filterByCategory(categoryId) {
     const products = [];
     //TODO: search products by category Id
-    let 
+    
 
     return products;
   }
