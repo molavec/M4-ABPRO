@@ -1,3 +1,7 @@
 class Category {
-  constructor(){};
+  constructor(labels, category){
+    this.labels= labels,
+    this.category = category
+  };
+  
 }
