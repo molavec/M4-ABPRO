@@ -9,14 +9,15 @@
  * @param {number} stock - La cantidad disponible del producto
  */
 class Product {
-  constructor(id, name, price, image, description, stock, category) {
+  constructor(id, name, price, image, description, stock, categoryId = '', labels = []) {
     this.id = id;
     this.name = name;
     this.price = price;
     this.image = image;
     this.description = description;
     this.stock = stock;
-    this.category = category;
+    this.categoryId = categoryId;
+    this.labels = labels 
   }
 
   /**
