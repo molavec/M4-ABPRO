@@ -1,9 +1,11 @@
 import catalog from "./data/catalog.js";
+import categoriesExamples from "./data/categories.js";
 import { getProductListHome, getProductListCart } from "./dom-builders.js";
 
 import Product from "./class/product.js";
 import Cart from "./class/cart.js";
 import Inventory from "./class/inventory.js";
+import Category from "./class/category.js";
 
 
 /**
@@ -31,6 +33,10 @@ const products = catalog.map((product)=> {
 	}
 );
 
+const categories = categoriesExamples.map((category)=>{
+	return new Category(category.id, category.name)
+});
+console.log('aqui esta el console.l',categories)
 // Crea el objeto carro.
 const cart = new Cart();
 
