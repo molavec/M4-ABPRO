@@ -51,16 +51,23 @@ const inventory = new Inventory(products);
 $(document).ready(function(){
 	"use strict";
 
+	/**===============================
+	 * Llenado dinámico de datos
+	 ===============================*/
+
 	// --> AÑADE OPCIONES AL SELECTOR DEL FILTRO POR CATEGORIAS
 	const filterOptionsHTML = categories.map((category)=>{
 		return `<option value="${category.getId()}">${category.getName()}</option>`;
 	});
-
 	$('#filter-product-category').html(filterOptionsHTML);
 
 	// --> AÑADE PRODUCTOS EN EL DOM
 	$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
 
+
+	/**===============================
+	 * Gestión de eventos
+	 ===============================*/
 
 	// --> CLICK ADD-TO-CART: Acciones botón anadir al carro 
 	$('.add-to-cart-box .add-button').click( function() {
@@ -280,6 +287,21 @@ $(document).ready(function(){
 		updateTotals();
 
 	});
+
+	// -> CLICK CLEAN CART: Acciones para limpiar del carro.
+	$('#filter-product-category').click( function(){
+		// TODO: Obtener el valor del option
+		const categoryId = $(this).val();
+		console.log('options value selected', categoryId);
+
+		// TODO: obtener los productos filtrados
+		const filteredProducts = inventory.filterByCategory(categoryId);
+
+		// TODO: repintar los productos.
+		$('#products .feature-content .row').html(getProductListHome(filteredProducts));
+
+	});
+
 
 });
 

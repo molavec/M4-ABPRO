@@ -116,11 +116,14 @@ class Inventory {
    * @returns products array filtered by category.
    */
   filterByCategory(categoryId) {
-    const products = [];
+    const productsF = this.products[0];
+
+
+    console.log('products filtered', productsF)
     //TODO: search products by category Id
     
 
-    return products;
+    return productsF;
   }
 
 }
