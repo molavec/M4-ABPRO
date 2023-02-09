@@ -29,6 +29,7 @@ const products = catalog.map((product)=> {
 			product.image,
 			product.description,
 			product.stock,
+			product.categoryId,
 		);
 	}
 );
@@ -36,7 +37,7 @@ const products = catalog.map((product)=> {
 const categories = categoriesExamples.map((category)=>{
 	return new Category(category.id, category.name)
 });
-console.log('aqui esta el console.l',categories)
+
 
 
 
@@ -59,7 +60,7 @@ $(document).ready(function(){
 	const filterOptionsHTML = categories.map((category)=>{
 		return `<option value="${category.getId()}">${category.getName()}</option>`;
 	});
-	console.log(filterOptionsHTML+"----------------")
+	// console.log(filterOptionsHTML)
 	$('#filter-product-category').html(filterOptionsHTML);
 
 	// --> AÑADE PRODUCTOS EN EL DOM
@@ -293,16 +294,13 @@ $(document).ready(function(){
 	$('#filter-product-category').click( function(){
 		// TODO: Obtener el valor del option
 		const categoryId = $(this).val();
-		console.log('options value selected', categoryId);
+		// console.log('options value selected', categoryId);
 
 		// TODO: obtener los productos filtrados
 		const filteredProducts = inventory.filterByCategory(categoryId);
-		console.log("-------------------------------"+filteredProducts)
+		// console.log("-------------------------------"+filteredProducts)
 		// TODO: repintar los productos.
 		$('#products .feature-content .row').html(getProductListHome(filteredProducts));
-
 	});
-
-
 });
 

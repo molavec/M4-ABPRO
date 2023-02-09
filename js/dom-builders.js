@@ -101,5 +101,4 @@ const getProductListCart = (itemList) => {
   });
   return productListCart.join('\n');
 };
-
-export { getProductListHome, getProductListCart };
+export { getProductListHome, getProductListCart};

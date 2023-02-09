@@ -6,6 +6,8 @@ const catalog = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     price: 30000,
     stock: 2,
+    categoryId: 1,
+
   },
   {
     image:'assets/images/features/f2.jpg',
@@ -14,6 +16,7 @@ const catalog = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     price: 30000,
     stock: 4,  
+    categoryId: 2,
   },
   {
     image:'assets/images/features/f3.jpg',
@@ -22,6 +25,7 @@ const catalog = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     price: 30000,
     stock: 0, 
+    categoryId: 2,
   },
   {
     image:'assets/images/features/f4.jpg',
@@ -29,7 +33,8 @@ const catalog = [
     code: 'A004',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
     price: 30000,
-    stock: 1,  
+    stock: 1, 
+    categoryId: 1,
   },
 ]
 

@@ -7,5 +7,7 @@
         id: 2,
         name: "Sillas",
     },
+    
 ]
 export default categories
+
