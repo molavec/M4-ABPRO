@@ -37,6 +37,9 @@ const categories = categoriesExamples.map((category)=>{
 	return new Category(category.id, category.name)
 });
 console.log('aqui esta el console.l',categories)
+
+
+
 // Crea el objeto carro.
 const cart = new Cart();
 
@@ -48,8 +51,16 @@ const inventory = new Inventory(products);
 $(document).ready(function(){
 	"use strict";
 
+	// --> AÑADE OPCIONES AL SELECTOR DEL FILTRO POR CATEGORIAS
+	const filterOptionsHTML = categories.map((category)=>{
+		return `<option value="${category.getId()}">${category.getName()}</option>`;
+	});
+
+	$('#filter-product-category').html(filterOptionsHTML);
+
 	// --> AÑADE PRODUCTOS EN EL DOM
 	$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
+
 
 	// --> CLICK ADD-TO-CART: Acciones botón anadir al carro 
 	$('.add-to-cart-box .add-button').click( function() {
