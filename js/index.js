@@ -59,6 +59,7 @@ $(document).ready(function(){
 	const filterOptionsHTML = categories.map((category)=>{
 		return `<option value="${category.getId()}">${category.getName()}</option>`;
 	});
+	console.log(filterOptionsHTML+"----------------")
 	$('#filter-product-category').html(filterOptionsHTML);
 
 	// --> AÑADE PRODUCTOS EN EL DOM
@@ -296,7 +297,7 @@ $(document).ready(function(){
 
 		// TODO: obtener los productos filtrados
 		const filteredProducts = inventory.filterByCategory(categoryId);
-
+		console.log("-------------------------------"+filteredProducts)
 		// TODO: repintar los productos.
 		$('#products .feature-content .row').html(getProductListHome(filteredProducts));
 
