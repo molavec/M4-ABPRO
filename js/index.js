@@ -302,5 +302,21 @@ $(document).ready(function(){
 		// TODO: repintar los productos.
 		$('#products .feature-content .row').html(getProductListHome(filteredProducts));
 	});
+
+
+
+
+		// -> CLICK FILTER TEXT SEARCH: Accion filtra por texto libre los productos.
+		$('#searchTextProductButton').click( function(){
+
+		const inputSearchText= document.getElementById("searchTextProductInput").value;
+
+		console.log("value input libre "+  inputSearchText)
+
+		const filteredtextproduct= inventory.searchProducts(inputSearchText);
+		console.log("los productos que coinciden " +filteredtextproduct)
+
+		$('#products .feature-content .row').html(getProductListHome(filteredtextproduct));
+		});
 });
 
