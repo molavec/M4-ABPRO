@@ -318,5 +318,16 @@ $(document).ready(function(){
 
 		$('#products .feature-content .row').html(getProductListHome(filteredtextproduct));
 		});
+
+		// -> CLICK FILTER PRICE: Accion filtra por precio los productos.
+		$('#btnRango').click( function(){
+			let minPrice = document.getElementById('intMinimo');
+			let maxPrice = document.getElementById('intMaximo');
+
+			const filteredProductsRango = inventory.filterProductsByPrice(minPrice.value, maxPrice.value);
+
+			//TODO: display filtered products on page
+			$('#products .feature-content .row').html(getProductListHome(filteredProductsRango));
+		});
 });
 
