@@ -112,8 +112,6 @@
 
 				<div class="container search-box">
 					<div class="filter-category-box">
-
-
 						Categorias:
 						<select name="" id="filter-product-category" value="null">
 							<!-- TODO: llenar dinamicamente las opciones desde js -->
@@ -123,14 +121,19 @@
 							<option value=2>sillas</option>
 							<!-- +56946608243 nico opazos -->
 						</select>
-						
-
-
-						</div>
-
 					</div>
 				</div>
-				
+				<br>
+				<div class="filter-rango-category-box">
+					<div class="row container">
+						<label>Rango de Precio</label>
+						<div class="col-md-2"><input class="form-control" type="number" name="cantidad" id="intMinimo" min="1" max="1000" placeholder="mínimo"></div>
+						<div class="col-md-2"><input class="form-control" type="number" name="cantidad" id="intMaximo" min="1" max="1000000" placeholder="máximo"></div>
+						<div class="col-md-2">
+							<button type="button"  class="btn btn-primary" id="btnRango">Buscar</button>
+						</div>
+					<div>
+				</div>
 				<div class="feature-content">
 					<div class="row">
 						<!-- PRODUCTS GOES HERE -->
