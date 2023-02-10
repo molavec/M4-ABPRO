@@ -1,9 +1,11 @@
-import catalog from "./catalog.js";
+import catalog from "./data/catalog.js";
+import categoriesExamples from "./data/categories.js";
 import { getProductListHome, getProductListCart } from "./dom-builders.js";
 
 import Product from "./class/product.js";
 import Cart from "./class/cart.js";
 import Inventory from "./class/inventory.js";
+import Category from "./class/category.js";
 
 
 /**
@@ -27,9 +29,17 @@ const products = catalog.map((product)=> {
 			product.image,
 			product.description,
 			product.stock,
+			product.categoryId,
 		);
 	}
 );
+
+const categories = categoriesExamples.map((category)=>{
+	return new Category(category.id, category.name)
+});
+
+
+
 
 // Crea el objeto carro.
 const cart = new Cart();
@@ -42,12 +52,26 @@ const inventory = new Inventory(products);
 $(document).ready(function(){
 	"use strict";
 
+	/**===============================
+	 * Llenado dinámico de datos
+	 ===============================*/
+
+	// --> AÑADE OPCIONES AL SELECTOR DEL FILTRO POR CATEGORIAS
+	const filterOptionsHTML = categories.map((category)=>{
+		return `<option value="${category.getId()}">${category.getName()}</option>`;
+	});
+	// console.log(filterOptionsHTML)
+	$('#filter-product-category').html(filterOptionsHTML);
+
 	// --> AÑADE PRODUCTOS EN EL DOM
 	$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
 
 
 	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
 
+	/**===============================
+	 * Gestión de eventos
+	 ===============================*/
 
 	// --> CLICK ADD-TO-CART: Acciones botón anadir al carro 
 	$('.add-to-cart-box .add-button').click( function() {
@@ -222,12 +246,11 @@ $(document).ready(function(){
 
 		// Actualiza el stock de los productos
 		cart.getItems().forEach((item)=>{
-			const index = products.findIndex((product) => (product.getId() === item.product.getId()));
-			products[index].setStock(products[index].getStock() - item.quantity);
+			inventory.removeStock(item.product.getId(), item.quantity);
 		});
 		
 		// --> ACTUALIZA PRODUCTOS EN EL DOM
-		$('#products .feature-content .row').html(getProductListHome(products));
+		$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
 
 		// Elimina los items del carro
 		cart.clear();
@@ -280,5 +303,44 @@ $(document).ready(function(){
 		//TODO:
 	});
 
+	// -> CLICK CLEAN CART: Acciones para limpiar del carro.
+	$('#filter-product-category').click( function(){
+		// TODO: Obtener el valor del option
+		const categoryId = $(this).val();
+		// console.log('options value selected', categoryId);
+
+		// TODO: obtener los productos filtrados
+		const filteredProducts = inventory.filterByCategory(categoryId);
+		// console.log("-------------------------------"+filteredProducts)
+		// TODO: repintar los productos.
+		$('#products .feature-content .row').html(getProductListHome(filteredProducts));
+	});
+
+
+
+
+		// -> CLICK FILTER TEXT SEARCH: Accion filtra por texto libre los productos.
+		$('#searchTextProductButton').click( function(){
+
+		const inputSearchText= document.getElementById("searchTextProductInput").value;
+
+		console.log("value input libre "+  inputSearchText)
+
+		const filteredtextproduct= inventory.searchProducts(inputSearchText);
+		console.log("los productos que coinciden " +filteredtextproduct)
+
+		$('#products .feature-content .row').html(getProductListHome(filteredtextproduct));
+		});
+
+		// -> CLICK FILTER PRICE: Accion filtra por precio los productos.
+		$('#btnRango').click( function(){
+			let minPrice = document.getElementById('intMinimo');
+			let maxPrice = document.getElementById('intMaximo');
+
+			const filteredProductsRango = inventory.filterProductsByPrice(minPrice.value, maxPrice.value);
+
+			//TODO: display filtered products on page
+			$('#products .feature-content .row').html(getProductListHome(filteredProductsRango));
+		});
 });
 

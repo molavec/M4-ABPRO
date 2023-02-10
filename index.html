@@ -43,7 +43,7 @@
 					<div class="row">
 						<div class="col-6 col-md-8">
 							<!--logo-->
-							<a class="navbar-brand" href="#">Tecno Chile</a>
+							<a class="navbar-brand" href="index.html">Tecno Chile</a>
 						</div>
 						<div class="col-3 col-md-2">
 							<!--toggler menu responsive-->
@@ -54,28 +54,42 @@
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav me-auto mb-2 mb-lg-0">
 									<li class="nav-item">
-										<a class="nav-link active" aria-current="page" href="#home">Inicio</a>
+										<a class="nav-link active" aria-current="page" href="index.html#home">Inicio</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link active" aria-current="page" href="#products">Productos</a>
+										<a class="nav-link active" aria-current="page" href="index.html#products">Productos</a>
 									</li>
 								</ul>
 							</div>
 						</div>
+
 						<div class="col-3 col-md-2 p-2">
-							<!--carrito imagen-->
-							<div class="carrito">
-								<a 
-									href="#offcanvasExample"
-									data-bs-toggle="offcanvas" 
-									role="button" 
-									aria-controls="offcanvasExample"
-								>
-									<span class="lnr lnr-cart"></span>
-									<span id="cart-qty" class="badge badge-bg-1"></span>
-								</a>
+							<div class="row">
+								<!--carrito imagen-->
+								<div class="col carrito">
+									<a 
+										href="#offcanvasCart"
+										data-bs-toggle="offcanvas" 
+										role="button" 
+										aria-controls="offcanvasCart"
+									>
+										<span class="lnr lnr-cart"></span>
+										<span id="cart-qty" class="badge badge-bg-1"></span>
+									</a>
+								</div>
+								<!--settings imagen-->
+								<div class="col setting">
+									<a 
+										href="admin.html" 
+										role="button" 
+									>
+										<span class="lnr lnr-cog"></span>
+										<span id="cart-qty" class="badge badge-bg-1"></span>
+									</a>
+								</div>
 							</div>
 						</div>
+						
 						<!-- <div class="col">
 							<form class="d-flex" role="search">
 								<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -105,26 +119,66 @@
 		<!--products start -->
 		<section id="products" class="feature">
 			<div class="container">
+
 				<div class="section-header">
 					<h2>Nuestros Productos</h2>
 				</div><!--/.section-header-->
 
-				
+				<div class="container search-box">
+
+					<!-- filtro por texto -->
+					<div class="filter-text-box">
+						Buscar:
+						<input type="text" placeholder="Ingresa texto" id="searchTextProductInput">
+						<button id="searchTextProductButton" >buscar</button>
+					</div>
+
+					<!-- filtro por categotia -->
+					<div class="filter-category-box">
+						Categorias:
+						<select name="" id="filter-product-category" value="null">
+							<!-- llenar dinamicamente las opciones desde js -->
+							<option value="" selected disabled hidden>Choose here</option>
+							<!-- <option value="null" >Selecciona una categorias</option> -->
+							<option value=1>mesas</option>
+							<option value=2>sillas</option>
+							<!-- +56946608243 nico opazos -->
+						</select>
+					</div>
+
+					<!-- filtro por rango de precios -->
+					<div class="filter-rango-category-box">
+						<div class="row container">
+							<label>Rango de Precio</label>
+							<div class="col-md-2"><input class="form-control" type="number" name="cantidad" id="intMinimo" min="1" max="1000" placeholder="mínimo"></div>
+							<div class="col-md-2"><input class="form-control" type="number" name="cantidad" id="intMaximo" min="1" max="1000000" placeholder="máximo"></div>
+							<div class="col-md-2">
+								<button type="button"  class="btn btn-primary" id="btnRango">Buscar</button>
+							</div>
+						<div>
+					</div>
+
+				</div>
+
+				<br>
+
+				<!-- Lista de productos -->
 				<div class="feature-content">
 					<div class="row">
 						<!-- PRODUCTS GOES HERE -->
 					</div>
 				</div>
+
 			</div><!--/.container-->
 
 		</section>
 		<!--products end -->
 
-		<!-- offcanvaz start -->
-		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+		<!-- offcanva cart start -->
+		<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasCart" aria-labelledby="offcanvasCartLabel">
 
 			<div class="offcanvas-header">
-				<h5 class="offcanvas-title" id="offcanvasExampleLabel">Tus Productos</h5>
+				<h5 class="offcanvas-title" id="offcanvasCartLabel">Tus Productos</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 			</div>
 
@@ -163,7 +217,7 @@
 				</div>
 			</div>
 		</div>
-		<!-- offcanvaz end -->
+		<!-- offcanva cart end -->
 
 		<!--footer start-->
 		<footer id="footer"  class="footer">

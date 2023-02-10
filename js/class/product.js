@@ -9,13 +9,15 @@
  * @param {number} stock - La cantidad disponible del producto
  */
 class Product {
-  constructor(id, name, price, image, description, stock) {
+  constructor(id, name, price, image, description, stock, categoryId = '', labels = []) {
     this.id = id;
     this.name = name;
     this.price = price;
     this.image = image;
     this.description = description;
     this.stock = stock;
+    this.categoryId = categoryId;
+    this.labels = labels 
   }
 
   /**
@@ -25,7 +27,6 @@ class Product {
   getId() {
     return this.id;
   }
-
   /**
    * Setter para el id
    * @param {number} id
@@ -113,6 +114,22 @@ class Product {
   setStock(stock) {
     this.stock = stock;
   }
+
+  /**
+   * getter para los labels
+   * @returns un arreglo de etiquetas del producto
+   */
+  getlabels(){
+    return this.labels
+  }
+/**
+ * setter para el categoria
+ * @param {string} 
+ */
+  setlabels(label){
+    this.labels=label
+  }
+
 }
 
 export default Product;

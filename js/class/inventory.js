@@ -68,8 +68,8 @@ class Inventory {
    * @param {*} quantity quantity to be removed from stock
    * @returns new stock quantity
    */
-  consumeStock(productId, quantity) {
-    const product = this.products.getProductById(productId);
+  removeStock(productId, quantity) {
+    const product = this.getProductById(productId);
     const newStock = product.getStock() - parseInt(quantity); 
     product.setStock((newStock >= 0) ? newStock : 0 );
     return product.getStock();
@@ -82,45 +82,41 @@ class Inventory {
    * @returns products array that matched with search text.
    */
   searchProducts(searchText) {
-    //TODO: search products by name, description or 
-    const product = this.products.filter((product)=>{
+    //TODO: search products by name, description or
+    console.log(this.products) 
+    const filteredProducts = this.products.filter((product)=>{
+
       console.log(product.getName())
       console.log(product.getDescription())
       // console.log(product.getLabels())
       // TODO: falta comparar las etiquetas
-      return product.getName() === searchText || product.getDescription() === searchText 
+      return product.getName() === searchText || product.getDescription() === searchText
     })
-    return products;
+    return filteredProducts;
   }
-
-
   /**
    * Obtain products filtered by min and max price
    * @param {Number} minPrice minimal price
    * @param {Number} searchText maximal price
    * @returns products array in range price.
-   */
-  filterByPrice(minPrice = 0, maxPrice) {
-    const products = [];
-    //TODO: search products in price range
-    // console.log('this.products', this.products);
-    // this.products.filter(()=>{})
-    // Carlos Vezquez
-    return products;
+  //  */
+  filterProductsByPrice(minPrice,maxPrice) {
+    return this.products.filter(product =>product.price >= minPrice && product.price <= maxPrice);
   }
-
-
   /**
    * Obtain filtered by Category
    * @param {String} categoryId categoryId
    * @returns products array filtered by category.
    */
   filterByCategory(categoryId) {
-    const products = [];
-    //TODO: search products by category Id
-    return products;
-  }
+    const productsF = this.products;
+    console.log('products filtered', productsF)
+    let productfilter = productsF.filter (producto => categoryId == producto.categoryId)
+    console.log(productfilter)
 
+    return productfilter
+    //TODO: search products by category Id
+  }
 }
 
 
