@@ -102,4 +102,22 @@ const getProductListCart = (itemList) => {
   return productListCart.join('\n');
 };
 
+const getProductListRowsAdmin = (productList) => {
+  const productListRows = productList.map((product)=>{
+    return `
+      <tr>
+        <th scope="row">${product.getName()}</th>
+        <td>${product.getDescription()}</td>
+        <td>${product.getName()}</td>
+        <td>${product.getName()}</td>
+        <td>${product.getName()}</td>
+        <td> <button>Editar</button> <button>Eliminar</button> </td>
+      </tr>
+    `;
+  })
+
+  
+  return productListRows; 
+}
+
 export { getProductListHome, getProductListCart };

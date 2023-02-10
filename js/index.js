@@ -45,6 +45,10 @@ $(document).ready(function(){
 	// --> AÑADE PRODUCTOS EN EL DOM
 	$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
 
+
+	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
+
+
 	// --> CLICK ADD-TO-CART: Acciones botón anadir al carro 
 	$('.add-to-cart-box .add-button').click( function() {
 
@@ -263,6 +267,17 @@ $(document).ready(function(){
 		// Actualiza totales
 		updateTotals();
 
+	});
+
+	// -> ADMIN: Editar productos de la lista
+	$('').click( function(){
+		//TODO: 
+	});
+
+
+	// -> ADMIN: Eliminar productos de la lista
+	$('').click( function(){
+		//TODO:
 	});
 
 });

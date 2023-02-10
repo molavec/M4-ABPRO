@@ -93,7 +93,7 @@
 			
 			<!-- TODO: crear un listado de productos -->
 
-			<div class="container">
+			<div class="container pt-5 pb-5">
 				<h1>Lista de productos</h1>
 			</div>
 			
@@ -101,29 +101,43 @@
 				<table class="table">
 					<thead>
 						<tr>
-							<th scope="col">#</th>
-							<th scope="col">First</th>
-							<th scope="col">Last</th>
-							<th scope="col">Handle</th>
+							<th scope="col">Producto</th>
+							<th scope="col">Descripción</th>
+							<th scope="col">Categoría</th>
+							<th scope="col">Precio</th>
+							<th scope="col">Cantidad</th>
+							<th scope="col">Función</th>
 						</tr>
 					</thead>
 					<tbody>
+						<div id="product-rows">
+							<!-- 
+							Filas de productos
+							 -->
+						</div>
 						<tr>
-							<th scope="row">1</th>
-							<td>Mark</td>
-							<td>Otto</td>
-							<td>@mdo</td>
+							<th scope="row">Designed sofa</th>
+							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+							<td>Living</td>
+							<td>30000</td>
+							<td>2</td>
+							<td> <button>Editar</button> <button>Eliminar</button> </td>
 						</tr>
 						<tr>
-							<th scope="row">2</th>
-							<td>Jacob</td>
-							<td>Thornton</td>
-							<td>@fat</td>
+							<th scope="row">Dinning table</th>
+							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+							<td>Comedor</td>
+							<td>30000</td>
+							<td>4</td>
+							<td> <button>Editar</button> <button>Eliminar</button> </td>
 						</tr>
 						<tr>
-							<th scope="row">3</th>
-							<td colspan="2">Larry the Bird</td>
-							<td>@twitter</td>
+							<th scope="row">Modern arm chair</th>
+							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+							<td>Personal</td>
+							<td>30000</td>
+							<td>1</td>
+							<td> <button>Editar</button> <button>Eliminar</button> </td>
 						</tr>
 					</tbody>
 				</table>
