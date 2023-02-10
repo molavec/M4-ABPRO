@@ -108,10 +108,10 @@ const getProductListRowsAdmin = (productList) => {
       <tr>
         <th scope="row">${product.getName()}</th>
         <td>${product.getDescription()}</td>
-        <td>${product.getName()}</td>
-        <td>${product.getName()}</td>
-        <td>${product.getName()}</td>
-        <td> <button>Editar</button> <button>Eliminar</button> </td>
+        <td>${product.getCategory()}</td>
+        <td>${product.getPrice()}</td>
+        <td>${product.getQuantity()}</td>
+        <td> <button>Editar</button> <button>Eliminar</button> <button>Guardar</button> </td>
       </tr>
     `;
   })
@@ -120,4 +120,4 @@ const getProductListRowsAdmin = (productList) => {
   return productListRows; 
 }
 
-export { getProductListHome, getProductListCart };
+export { getProductListHome, getProductListCart,  getProductListRowsAdmin };
