@@ -33,6 +33,8 @@ class Inventory {
    */
   addProduct(product) {
     const existingProduct = this.products.find(p => p.id === product.id);
+    console.log('existingProduct', existingProduct);
+    console.log('product.id', product.id);
     if (!existingProduct) {
       this.products.push(product);
     }

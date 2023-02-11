@@ -383,32 +383,54 @@ $(document).ready(function () {
 	});
 
 	// -> CLICK SHOW INPUT: Accion de mostrar formulario agregar producto.
-	$("#show").click(function () {
-		$("#formulario").show();
+	$("#new-product-cta").click(function () {
+		$("#add-product-admin-box").show();
 	});
 
 	// -> CLICK ADD NEW PRODUCT
 	$("#btnNewProduct").click(function () {
 
 
-		let inputImg = document.getElementById("inputImg")
-		let inputName = document.getElementById("inputName")
-		let inputCode = document.getElementById("inputCode")
-		let inputDescription = document.getElementById("inputDescription")
-		let inputPrice = document.getElementById("inputPrice")
-		let inputStock = document.getElementById("inputStock")
-		let inputCategoryId = document.getElementById("inputCategoryId")
+		// obtiendo valores del input
+		let inputImg = $("#inputImg")
+		let inputName = $("#inputName")
+		let inputCode = $("#inputCode")
+		let inputDescription = $("#inputDescription")
+		let inputPrice = $("#inputPrice")
+		let inputStock = $("#inputStock")
+		let inputCategoryId = $("#inputCategoryId")
 
-		let newProduct = new Product(inputImg.value,
-			inputName.value,
-			inputCode.value,
-			inputDescription.value,
-			inputPrice.value,
-			inputStock.value,
-			inputCategoryId.value);
+		// se crea el objeto producto
+		const newProduct = new Product(
+			inputCode.val(),
+			inputName.val(),
+			inputPrice.val(),
+			inputImg.val(),
+			inputDescription.val(),
+			inputStock.val(),
+			inputCategoryId.val(),
+		);
 
+		// Agrega producto a inventario
 		inventory.addProduct(newProduct);
 		console.log('inventaRIO updatedd', inventory.getProducts())
+
+		// repintar filas en tabla inventario
+		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
+		$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
+
+		// Limpia inputs formularios
+		inputImg.val('');
+		inputName.val('');
+		inputCode.val('');
+		inputDescription.val('');
+		inputPrice.val('');
+		inputStock.val('');
+		inputCategoryId.val('');
+
+		//esconder formulario nuevo producto
+		$("#add-product-admin-box").hide();
+		
 
 	});
 

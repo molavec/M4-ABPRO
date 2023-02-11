@@ -103,46 +103,49 @@
 		</header>
 
 		
+		<section id="new-product-container" class="container">
 			
-			<!-- TODO: crear un listado de productos -->
-            <div class="d-flex flex-row-reverse">
-				
+			<div class="d-flex flex-row-reverse">
 				<div class="p-2">
-					<button id="show">Agregar producto</button>
+					<button id="new-product-cta" class="btn btn-primary">Agregar producto</button>
 				</div>
-            <div class="oculto" id="formulario">
-			<div class="container" id="show">
-            
-				
-			<div class="mb-3">
-				<h6>Imagen</h6>
-				<input id="inputImg" placeholder="Agrega el link de tu imagen" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
 			</div>
-			<div class="mb-3">
-				<h6>Nombre</h6>
-				<input id="inputName" placeholder="Agrega el nombre de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-			</div>
-			<div class="mb-3">
-				<h6>Codigo</h6>
-				<input id="inputCode" placeholder="Agrega el codigo de tu producto"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-			</div>
-			<div class="mb-3">	
-				<h6>Descripcion</h6>
-				<input id="inputDescription" placeholder="Agrega la descripcion de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-			</div>
-			<div class="mb-3">
-				<h6>Precio</h6>
-				<input id="inputPrice" placeholder="Agrega el precio de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-			</div>	
-			<div class="mb-3">
-				<h6>Stock</h6>
-				<input id="inputStock" placeholder="Agrega el stock de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
-			</div>	
-			<div class="mb-3">
-				<h6>Categoria Id</h6>
-				<input id="inputCategoryId" placeholder="Agrega la Categoria Id de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+	
+			<div id="add-product-admin-box" class="hide">
+
+				<div class="mb-3">
+					<h6>Nombre</h6>
+					<input id="inputName" placeholder="Agrega el nombre de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="mb-3">
+					<h6>Codigo</h6>
+					<input id="inputCode" placeholder="Agrega el codigo de tu producto"  type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="mb-3">	
+					<h6>Descripcion</h6>
+					<input id="inputDescription" placeholder="Agrega la descripcion de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="mb-3">
+					<h6>Imagen</h6>
+					<input id="inputImg" placeholder="Agrega el link de tu imagen" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>
+				<div class="mb-3">
+					<h6>Categoria Id</h6>
+					<input id="inputCategoryId" placeholder="Agrega la Categoria Id de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>		
+				<div class="mb-3">
+					<h6>Precio</h6>
+					<input id="inputPrice" placeholder="Agrega el precio de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>	
+				<div class="mb-3">
+					<h6>Stock</h6>
+					<input id="inputStock" placeholder="Agrega el stock de tu producto" type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+				</div>	
+				<button id="btnNewProduct" class="btn btn-primary">Enviar</button>
+
 			</div>		
-				<button id="btnNewProduct" >Enviar</button>
+				
+		</section>
 			
 		   
 		<section id="inventory">
@@ -204,35 +207,26 @@
 			<div id="pruebaEditar">
 
 			</div>
-			<tr>
-				<div id="informacion">
-				<th scope="row">Designed sofa¿</th>
-				<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-				<td>Living</td>
-				<td>30000</td>
-				<td>2</td>
-				<td> <button id="botonEditar" >Editar</button> <button>Eliminar</button> </td>	
-				</div>
-				<div id="inputDiv" >
-					<th  scope="row"><input type="text" id="inputNombre" placeholder="nombre"></th>
-					<td><input type="text" id="inputDescripcion" placeholder="descripcion"></td>
-					<td><input type="text" id="inputCategoria" placeholder="categoria"></td>
-					<td><input type="number" id="inputPrecio" placeholder="precio"></td>
-					<td><input type="number" id="inputStock" placeholder="stock"></td>
-					<td><input type="text" id="inputId" placeholder="id"></td>
-					<td><input type="text" id="inputImagen" placeholder="imagen"></td>
-					<td><input type="text" id="inputEtiqueta" placeholder="etiqueta"></td>
-					<button id="botonGuardar">guardar</button>
-
-				</div>
-			
-
+			<div id="informacion">
+			<th scope="row">Designed sofa¿</th>
+			<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+			<td>Living</td>
+			<td>30000</td>
+			<td>2</td>
+			<td> <button id="botonEditar" >Editar</button> <button>Eliminar</button> </td>	
+			</div>
+			<div id="inputDiv" >
+				<th  scope="row"><input type="text" id="inputNombre" placeholder="nombre"></th>
+				<td><input type="text" id="inputDescripcion" placeholder="descripcion"></td>
+				<td><input type="text" id="inputCategoria" placeholder="categoria"></td>
+				<td><input type="number" id="inputPrecio" placeholder="precio"></td>
+				<td><input type="number" id="inputStock" placeholder="stock"></td>
+				<td><input type="text" id="inputId" placeholder="id"></td>
+				<td><input type="text" id="inputImagen" placeholder="imagen"></td>
+				<td><input type="text" id="inputEtiqueta" placeholder="etiqueta"></td>
+				<button id="botonGuardar">guardar</button>
 
 			</div>
-
-			
-
-			
 			
 		</section>
 

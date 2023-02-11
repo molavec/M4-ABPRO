@@ -189,10 +189,6 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 
 /*boton agregar*/
 
-.oculto{
-    display: none;
-}
-
 /*badge*/
 .badge {
     background-color: #e99c2e;
@@ -482,5 +478,16 @@ span.feature-review {margin-left: 10px;}
 }
 
 #inputDiv{
+    display: none;
+}
+
+#new-product-container {
+    padding-top: 100px;
+}
+
+/*-------------------------------------
+    7. admin
+--------------------------------------*/
+.hide {
     display: none;
 }
