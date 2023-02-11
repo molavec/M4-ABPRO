@@ -21,20 +21,20 @@ const updateTotals = () => {
 }
 
 // crea un arreglo de productos a partir de la 'base de datos' catalog.js
-export const products = catalog.map((product)=> {
-		return new Product(
-			product.code,
-			product.name,
-			product.price,
-			product.image,
-			product.description,
-			product.stock,
-			product.categoryId,
-		);
-	}
+export const products = catalog.map((product) => {
+	return new Product(
+		product.code,
+		product.name,
+		product.price,
+		product.image,
+		product.description,
+		product.stock,
+		product.categoryId,
+	);
+}
 );
 
-const categories = categoriesExamples.map((category)=>{
+const categories = categoriesExamples.map((category) => {
 	return new Category(category.id, category.name)
 });
 
@@ -49,7 +49,7 @@ const inventory = new Inventory(products);
 
 
 // --> MANEJO DEL DOM
-$(document).ready(function(){
+$(document).ready(function () {
 	"use strict";
 
 	/**===============================
@@ -57,7 +57,7 @@ $(document).ready(function(){
 	 ===============================*/
 
 	// --> AÑADE OPCIONES AL SELECTOR DEL FILTRO POR CATEGORIAS
-	const filterOptionsHTML = categories.map((category)=>{
+	const filterOptionsHTML = categories.map((category) => {
 		return `<option value="${category.getId()}">${category.getName()}</option>`;
 	});
 	// console.log(filterOptionsHTML)
@@ -75,7 +75,7 @@ $(document).ready(function(){
 	 ===============================*/
 
 	// --> CLICK ADD-TO-CART: Acciones botón anadir al carro 
-	$('.add-to-cart-box .add-button').click( function() {
+	$('.add-to-cart-box .add-button').click(function () {
 
 		// Cambia el estado de boton añadido por 1 segundo
 		const addButton = $(this);
@@ -83,11 +83,11 @@ $(document).ready(function(){
 		addButton.toggle();
 		addedButton.toggle();
 		setTimeout(
-				function () {
-						addButton.toggle();
-						addedButton.toggle();
-				},
-				1000
+			function () {
+				addButton.toggle();
+				addedButton.toggle();
+			},
+			1000
 		);
 
 		// Obtiene la información del producto y crea el objeto producto
@@ -104,45 +104,45 @@ $(document).ready(function(){
 
 		// Obtener la cantidad de productos
 		const quantity = $(this).parent()
-														.parent()
-														.children(".box-cantidad")
-														.children(".input-cantidad")
-														.val();
+			.parent()
+			.children(".box-cantidad")
+			.children(".input-cantidad")
+			.val();
 
 		// Añade productos al carro
-		if(quantity > 0 && quantity <= product.getStock()){
+		if (quantity > 0 && quantity <= product.getStock()) {
 			cart.addItem(product, quantity);
-		} else if( quantity > product.getStock())  {
+		} else if (quantity > product.getStock()) {
 			// Añade mensaje que se ha superado el stock
 			$(this).parent()
-							.parent()
-							.parent()
-							.children(".single-feature-txt")
-							.children(".stock-message")
-							.html(`Sólo hay ${product.getStock()} disponibles.`);
+				.parent()
+				.parent()
+				.children(".single-feature-txt")
+				.children(".stock-message")
+				.html(`Sólo hay ${product.getStock()} disponibles.`);
 
 			// actualiza el valor al stock disponible
 			$(this).parent()
-							.parent()
-							.children(".box-cantidad")
-							.children(".input-cantidad")
-							.val(product.getStock());
+				.parent()
+				.children(".box-cantidad")
+				.children(".input-cantidad")
+				.val(product.getStock());
 			// Añade el stock
 			cart.addItem(product, product.getStock());
 		} else {
 			// actualiza el valor a cero
 			$(this).parent()
-							.parent()
-							.children(".box-cantidad")
-							.children(".input-cantidad")
-							.val(0);
+				.parent()
+				.children(".box-cantidad")
+				.children(".input-cantidad")
+				.val(0);
 			return;
 		}
-		
+
 		// Actualiza elementos del carro
 		const productsInCartHTML = getProductListCart(cart.getItems());
 		$("#totalizador .item-list").html(productsInCartHTML);
-		
+
 		// Actualiza el contador del ícono del carro
 		$("#cart-qty").html(cart.getQuantity());
 
@@ -150,47 +150,47 @@ $(document).ready(function(){
 		updateTotals();
 
 		// -> CLICK UPDATE ITEM IN CART: Acciones botón actualizar
-		$('#totalizador .cart-refresh').click( function() {
+		$('#totalizador .cart-refresh').click(function () {
 
 			// Obtiene el id y la cantidad del producto a actualizar
 			const quantity = $(this).parent()
-															.parent()
-															.children(".cart-info-box")
-															.children(".cart-quantity")
-															.children(".cart-quantity-input")
-															.val();
+				.parent()
+				.children(".cart-info-box")
+				.children(".cart-quantity")
+				.children(".cart-quantity-input")
+				.val();
 
 			// Actualiza elemento en el objeto carro.
-			if(quantity >= 0 && quantity <= product.getStock()){
+			if (quantity >= 0 && quantity <= product.getStock()) {
 				cart.updateItem(product.getId(), quantity);
-			} else if( quantity > product.getStock())  {
+			} else if (quantity > product.getStock()) {
 				// Añade mensaje que se ha superado el stock
 				$(this).parent()
-								.parent()
-								.children(".stock-message")
-								.html(`Sólo hay ${product.getStock()} dispoibles.`);
-	
+					.parent()
+					.children(".stock-message")
+					.html(`Sólo hay ${product.getStock()} dispoibles.`);
+
 				// actualiza el valor al stock disponible
 				$(this).parent()
-								.parent()
-								.children(".cart-info-box")
-								.children(".cart-quantity")
-								.children(".cart-quantity-input")
-								.val(product.getStock());
+					.parent()
+					.children(".cart-info-box")
+					.children(".cart-quantity")
+					.children(".cart-quantity-input")
+					.val(product.getStock());
 				// Añade el stock
 				cart.updateItem(product.getId(), product.getStock());
 			} else {
 				// actualiza el valor a cero
 				$(this).parent()
-								.parent()
-								.children(".box-cantidad")
-								.children(".input-cantidad")
-								.val(0);
+					.parent()
+					.children(".box-cantidad")
+					.children(".input-cantidad")
+					.val(0);
 				return;
 			}
 
 			// Actualiza el contador del ícono del carro
-			if(cart.getQuantity() > 0) {
+			if (cart.getQuantity() > 0) {
 				$("#cart-qty").html(cart.getQuantity());
 			} else {
 				$("#cart-qty").html('');
@@ -198,7 +198,7 @@ $(document).ready(function(){
 			}
 
 			// Remueve el item del DOM si el quantity es cero
-			if(quantity <= 0) {
+			if (quantity <= 0) {
 				$(this).parent().parent().parent().remove();
 			}
 
@@ -217,16 +217,16 @@ $(document).ready(function(){
 		});
 
 		// -> CLICK DETETE ITEM IN CART: Acciones botón eliminar
-		$('#totalizador .cart-remove').click( function() {
+		$('#totalizador .cart-remove').click(function () {
 
 			// Obtiene el id del producto a eliminar
-			const uuid = $(this).attr('uuid'); 
+			const uuid = $(this).attr('uuid');
 
 			// Eliminado elemento del carro
 			cart.removeItem(uuid);
 
 			// Actualiza el contador del ícono del carro
-			if(cart.getQuantity() > 0) {
+			if (cart.getQuantity() > 0) {
 				$("#cart-qty").html(cart.getQuantity());
 			} else {
 				$("#cart-qty").html('');
@@ -243,13 +243,13 @@ $(document).ready(function(){
 	});
 
 	// -> CLICK BUY CART: Acciones para limpiar del carro.
-	$('#buy-cart').click( function(){
+	$('#buy-cart').click(function () {
 
 		// Actualiza el stock de los productos
-		cart.getItems().forEach((item)=>{
+		cart.getItems().forEach((item) => {
 			inventory.removeStock(item.product.getId(), item.quantity);
 		});
-		
+
 		// --> ACTUALIZA PRODUCTOS EN EL DOM
 		$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
 
@@ -279,7 +279,7 @@ $(document).ready(function(){
 	});
 
 	// -> CLICK CLEAN CART: Acciones para limpiar del carro.
-	$('#clean-cart').click( function(){
+	$('#clean-cart').click(function () {
 
 		// Elimina los items del carro
 		cart.clear();
@@ -296,19 +296,19 @@ $(document).ready(function(){
 	});
 
 	// -> ADMIN: Editar productos de la lista
-	$('').click( function(){
+	$('').click(function () {
 		//TODO: 
 	});
 
 
 	// -> ADMIN: Eliminar productos de la lista
-	$('.delete-product').click( function(){
+	$('.delete-product').click(function () {
 		//TODO: Eliminar producto del inventario
-		const productId= $(this).attr('uuid');
-		console.log('uuid aqui' , productId);
+		const productId = $(this).attr('uuid');
+		console.log('uuid aqui', productId);
 
 		inventory.removeProduct(productId)
-		console.log('products' , inventory.getProducts());
+		console.log('products', inventory.getProducts());
 
 		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
 		$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
@@ -316,7 +316,7 @@ $(document).ready(function(){
 	});
 
 	// -> CLICK CLEAN CART: Acciones para limpiar del carro.
-	$('#filter-product-category').click( function(){
+	$('#filter-product-category').click(function () {
 		// TODO: Obtener el valor del option
 		const categoryId = $(this).val();
 		// console.log('options value selected', categoryId);
@@ -331,55 +331,86 @@ $(document).ready(function(){
 
 
 
-		// -> CLICK FILTER TEXT SEARCH: Accion filtra por texto libre los productos.
-		$('#searchTextProductButton').click( function(){
+	// -> CLICK FILTER TEXT SEARCH: Accion filtra por texto libre los productos.
+	$('#searchTextProductButton').click(function () {
 
-		const inputSearchText= document.getElementById("searchTextProductInput").value;
+		const inputSearchText = document.getElementById("searchTextProductInput").value;
 
-		console.log("value input libre "+  inputSearchText)
+		console.log("value input libre " + inputSearchText)
 
-		const filteredtextproduct= inventory.searchProducts(inputSearchText);
-		console.log("los productos que coinciden " +filteredtextproduct)
+		const filteredtextproduct = inventory.searchProducts(inputSearchText);
+		console.log("los productos que coinciden " + filteredtextproduct)
 
 		$('#products .feature-content .row').html(getProductListHome(filteredtextproduct));
-		});
+	});
 
-		// -> CLICK FILTER PRICE: Accion filtra por precio los productos.
-		$('#btnRango').click( function(){
-			let minPrice = document.getElementById('intMinimo');
-			let maxPrice = document.getElementById('intMaximo');
+	// -> CLICK FILTER PRICE: Accion filtra por precio los productos.
+	$('#btnRango').click(function () {
+		let minPrice = document.getElementById('intMinimo');
+		let maxPrice = document.getElementById('intMaximo');
 
-			const filteredProductsRango = inventory.filterProductsByPrice(minPrice.value, maxPrice.value);
+		const filteredProductsRango = inventory.filterProductsByPrice(minPrice.value, maxPrice.value);
 
-			//TODO: display filtered products on page
-			$('#products .feature-content .row').html(getProductListHome(filteredProductsRango));
-		});
+		//TODO: display filtered products on page
+		$('#products .feature-content .row').html(getProductListHome(filteredProductsRango));
+	});
 
-		//
-		$('#botonEditar').click(function(){
-			$('#inputDiv').show();
-			$('#informacion').hide();
-		});
+	//
+	$('#botonEditar').click(function () {
+		$('#inputDiv').show();
+		$('#informacion').hide();
+	});
 
 
 
-		$('#botonGuardar').click(function(){
-			const updateProduct= new Product(
-												document.getElementById("inputId").value,
-												document.getElementById("inputNombre").value,
-												document.getElementById("inputPrecio").value,
-												document.getElementById("inputImagen").value,
-												document.getElementById("inputDescripcion").value,
-												document.getElementById("inputStock").value,
-												document.getElementById("inputCategoria").value,
-												document.getElementById("inputEtiqueta").value
-			)
+	$('#botonGuardar').click(function () {
+		const updateProduct = new Product(
+			document.getElementById("inputId").value,
+			document.getElementById("inputNombre").value,
+			document.getElementById("inputPrecio").value,
+			document.getElementById("inputImagen").value,
+			document.getElementById("inputDescripcion").value,
+			document.getElementById("inputStock").value,
+			document.getElementById("inputCategoria").value,
+			document.getElementById("inputEtiqueta").value
+		)
 
-			console.log(updateProduct)
+		console.log(updateProduct)
 
-			inventory.updateProduct(updateProduct)
-			console.log(inventory.getProducts())
+		inventory.updateProduct(updateProduct)
+		console.log(inventory.getProducts())
 
-		});
+	});
+
+	// -> CLICK SHOW INPUT: Accion de mostrar formulario agregar producto.
+	$("#show").click(function () {
+		$("#formulario").show();
+	});
+
+	// -> CLICK ADD NEW PRODUCT
+	$("#btnNewProduct").click(function () {
+
+
+		let inputImg = document.getElementById("inputImg")
+		let inputName = document.getElementById("inputName")
+		let inputCode = document.getElementById("inputCode")
+		let inputDescription = document.getElementById("inputDescription")
+		let inputPrice = document.getElementById("inputPrice")
+		let inputStock = document.getElementById("inputStock")
+		let inputCategoryId = document.getElementById("inputCategoryId")
+
+		let newProduct = new Product(inputImg.value,
+			inputName.value,
+			inputCode.value,
+			inputDescription.value,
+			inputPrice.value,
+			inputStock.value,
+			inputCategoryId.value);
+
+		inventory.addProduct(newProduct);
+		console.log('inventaRIO updatedd', inventory.getProducts())
+
+	});
 
 });
+
