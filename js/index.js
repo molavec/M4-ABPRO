@@ -375,6 +375,8 @@ $(document).ready(function(){
 					inputCategoryId.value)
 					
 
+
+					
             inventory.addProduct(newProduct);
 
 			console.log('inventaRIO updatedd', inventory.getProducts())
