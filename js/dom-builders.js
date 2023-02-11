@@ -107,11 +107,16 @@ const getProductListRowsAdmin = (productList) => {
     return `
       <tr>
         <th scope="row">${product.getName()}</th>
+        <td>${product.getId()}</td>
         <td>${product.getDescription()}</td>
+        <td>${product.getImage()}</td>
         <td>${product.getCategoryId()}</td>
         <td>${product.getPrice()}</td>
         <td>${product.getStock()}</td>
-        <td> <button>Editar</button> <button>Eliminar</button> </td>
+        <td> 
+          <button>Editar</button> 
+          <button uuid="${product.getId()}" class="delete-product" >Eliminar</button> 
+        </td>
       </tr>
     `;
   })

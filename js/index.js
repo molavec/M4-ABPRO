@@ -68,7 +68,6 @@ $(document).ready(function(){
 
 
 	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
-
 	$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
 
 	/**===============================
@@ -301,8 +300,17 @@ $(document).ready(function(){
 
 
 	// -> ADMIN: Eliminar productos de la lista
-	$('').click( function(){
-		//TODO:
+	$('.delete-product').click( function(){
+		//TODO: Eliminar producto del inventario
+		const productId= $(this).attr('uuid');
+		console.log('uuid aqui' , productId);
+
+		inventory.removeProduct(productId)
+		console.log('products' , inventory.getProducts());
+
+		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
+		$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
+
 	});
 
 	// -> CLICK CLEAN CART: Acciones para limpiar del carro.
