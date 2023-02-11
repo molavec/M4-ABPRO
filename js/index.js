@@ -20,6 +20,27 @@ const updateTotals = () => {
 	$("#total-with-shipping").html(`$ ${cart.getTotal() + cart.getTax() + cart.getShippingCost()}`);
 }
 
+const updateProductRowsInTable = function() {
+	
+	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
+	$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
+	
+	// -> ADMIN: Eliminar productos de la lista
+	$('.delete-product').click(function () {
+		//TODO: Eliminar producto del inventario
+		const productId = $(this).attr('uuid');
+		console.log('uuid aqui', productId);
+
+		inventory.removeProduct(productId)
+		console.log('products', inventory.getProducts());
+
+		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
+		updateProductRowsInTable();
+
+	});
+
+}
+
 // crea un arreglo de productos a partir de la 'base de datos' catalog.js
 export const products = catalog.map((product) => {
 	return new Product(
@@ -68,7 +89,7 @@ $(document).ready(function () {
 
 
 	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
-	$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
+	updateProductRowsInTable();
 
 	/**===============================
 	 * Gestión de eventos
@@ -300,21 +321,6 @@ $(document).ready(function () {
 		//TODO: 
 	});
 
-
-	// -> ADMIN: Eliminar productos de la lista
-	$('.delete-product').click(function () {
-		//TODO: Eliminar producto del inventario
-		const productId = $(this).attr('uuid');
-		console.log('uuid aqui', productId);
-
-		inventory.removeProduct(productId)
-		console.log('products', inventory.getProducts());
-
-		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
-		$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
-
-	});
-
 	// -> CLICK CLEAN CART: Acciones para limpiar del carro.
 	$('#filter-product-category').click(function () {
 		// TODO: Obtener el valor del option
@@ -361,8 +367,6 @@ $(document).ready(function () {
 		$('#informacion').hide();
 	});
 
-
-
 	$('#botonGuardar').click(function () {
 		const updateProduct = new Product(
 			document.getElementById("inputId").value,
@@ -390,7 +394,6 @@ $(document).ready(function () {
 	// -> CLICK ADD NEW PRODUCT
 	$("#btnNewProduct").click(function () {
 
-
 		// obtiendo valores del input
 		let inputImg = $("#inputImg")
 		let inputName = $("#inputName")
@@ -417,7 +420,7 @@ $(document).ready(function () {
 
 		// repintar filas en tabla inventario
 		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
-		$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
+		updateProductRowsInTable();
 
 		// Limpia inputs formularios
 		inputImg.val('');
