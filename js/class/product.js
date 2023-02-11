@@ -116,6 +116,22 @@ class Product {
   }
 
   /**
+   * Getter para el stock
+   * @return {number} stock
+   */
+  getCategoryId() {
+    return this.categoryId;
+  }
+
+  /**
+   * Setter para el stock
+   * @param {number} stock
+   */
+  setCategoryId(categoryId) {
+    this.categoryId = categoryId;
+  }
+
+  /**
    * getter para los labels
    * @returns un arreglo de etiquetas del producto
    */

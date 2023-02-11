@@ -1,6 +1,6 @@
 import catalog from "./data/catalog.js";
 import categoriesExamples from "./data/categories.js";
-import { getProductListHome, getProductListCart } from "./dom-builders.js";
+import { getProductListHome, getProductListCart, getProductListRowsAdmin } from "./dom-builders.js";
 
 import Product from "./class/product.js";
 import Cart from "./class/cart.js";
@@ -68,6 +68,8 @@ $(document).ready(function(){
 
 
 	// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
+
+	$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
 
 	/**===============================
 	 * Gestión de eventos
