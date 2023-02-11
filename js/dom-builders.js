@@ -105,18 +105,27 @@ const getProductListCart = (itemList) => {
 const getProductListRowsAdmin = (productList) => {
   const productListRows = productList.map((product)=>{
     return `
-      <tr>
-        <th scope="row">${product.getName()}</th>
-        <td>${product.getId()}</td>
-        <td>${product.getDescription()}</td>
-        <td>${product.getImage()}</td>
-        <td>${product.getCategoryId()}</td>
-        <td>${product.getPrice()}</td>
-        <td>${product.getStock()}</td>
-        <td> 
-          <button>Editar</button> 
+      <tr class="info-row">
+        <th class="td-info" scope="row">${product.getName()}</th>
+        <td class="td-info">${product.getId()}</td>
+        <td class="td-info">${product.getDescription()}</td>
+        <td class="td-info">${product.getImage()}</td>
+        <td class="td-info">${product.getCategoryId()}</td>
+        <td class="td-info">${product.getPrice()}</td>
+        <td class="td-info">${product.getStock()}</td>
+        <td class="td-info"> 
+          <button class="edit-product-cta">Editar</button> 
           <button uuid="${product.getId()}" class="delete-product" >Eliminar</button> 
         </td>
+
+        <th class="td-input hide" scope="row"><input type="text" id="inputNombre" placeholder="nombre"></th>
+				<td class="td-input hide"><input type="text" id="inputId" placeholder="id"></td>
+				<td class="td-input hide"><input type="text" id="inputDescripcion" placeholder="descripcion"></td>
+				<td class="td-input hide"><input type="text" id="inputImagen" placeholder="imagen"></td>
+				<td class="td-input hide"><input type="text" id="inputCategoria" placeholder="categoria"></td>
+				<td class="td-input hide"><input type="number" id="inputPrecio" placeholder="precio"></td>
+				<td class="td-input hide"><input type="number" id="inputStock" placeholder="stock"></td>
+				<td class="td-input hide"><button id="botonGuardar">guardar</button></td>
       </tr>
     `;
   })

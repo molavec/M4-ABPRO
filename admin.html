@@ -102,7 +102,7 @@
 
 		</header>
 
-		
+		<!-- Seccion para crear producto -->
 		<section id="new-product-container" class="container">
 			
 			<div class="d-flex flex-row-reverse">
@@ -147,14 +147,14 @@
 				
 		</section>
 			
-		   
-		<section id="inventory">
+		<!-- Seccion con tabla de lista productos -->
+		<section id="inventory" class="container">
 		    
-			<div class="container">
+			<div >
 				<h1>Lista de productos</h1>
 			</div>
 			
-			<div class="container">
+			<div style="overflow-x: auto;">
 				<table class="table">
 					<thead>
 						<tr>
@@ -170,62 +170,8 @@
 					</thead>
 					<tbody id="product-rows">
 						<!-- Product rows goes here -->
-						<tr>
-							<div>
-							<th scope="row">Designed sofa</th>
-							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-							<td>Living</td>
-							<td>30000</td>
-							<td>2</td>
-							<td> <button>Editar</button> <button>Eliminar</button> </td>	
-							</div>
-							<div>
-								
-							</div>
-							
-						</tr>
-						<tr>
-							<th scope="row">Dinning table</th>
-							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-							<td>Comedor</td>
-							<td></td>
-							<td>4</td>
-							<td> <button>Editar</button> <button>Eliminar</button> </td>
-						</tr>
-						<tr>
-							<th scope="row">Modern arm chair</th>
-							<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-							<td>Personal</td>
-							<td>30000</td>
-							<td>1</td>
-							<td> <button>Editar</button> <button>Eliminar</button> </td>
-						</tr>
 					</tbody>
 				</table>
-			</div>
-
-			<div id="pruebaEditar">
-
-			</div>
-			<div id="informacion">
-			<th scope="row">Designed sofa¿</th>
-			<td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
-			<td>Living</td>
-			<td>30000</td>
-			<td>2</td>
-			<td> <button id="botonEditar" >Editar</button> <button>Eliminar</button> </td>	
-			</div>
-			<div id="inputDiv" >
-				<th  scope="row"><input type="text" id="inputNombre" placeholder="nombre"></th>
-				<td><input type="text" id="inputDescripcion" placeholder="descripcion"></td>
-				<td><input type="text" id="inputCategoria" placeholder="categoria"></td>
-				<td><input type="number" id="inputPrecio" placeholder="precio"></td>
-				<td><input type="number" id="inputStock" placeholder="stock"></td>
-				<td><input type="text" id="inputId" placeholder="id"></td>
-				<td><input type="text" id="inputImagen" placeholder="imagen"></td>
-				<td><input type="text" id="inputEtiqueta" placeholder="etiqueta"></td>
-				<button id="botonGuardar">guardar</button>
-
 			</div>
 			
 		</section>

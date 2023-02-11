@@ -317,8 +317,29 @@ $(document).ready(function () {
 	});
 
 	// -> ADMIN: Editar productos de la lista
-	$('').click(function () {
-		//TODO: 
+	//
+	$('.edit-product-cta').click(function () {
+		$(this).parent().parent().children('.td-info').hide();
+		$(this).parent().parent().children('.td-input').show();
+	});
+
+	$('#botonGuardar').click(function () {
+		const updateProduct = new Product(
+			document.getElementById("inputId").value,
+			document.getElementById("inputNombre").value,
+			document.getElementById("inputPrecio").value,
+			document.getElementById("inputImagen").value,
+			document.getElementById("inputDescripcion").value,
+			document.getElementById("inputStock").value,
+			document.getElementById("inputCategoria").value,
+			document.getElementById("inputEtiqueta").value
+		)
+
+		console.log(updateProduct)
+
+		inventory.updateProduct(updateProduct)
+		console.log(inventory.getProducts())
+
 	});
 
 	// -> CLICK CLEAN CART: Acciones para limpiar del carro.
@@ -333,9 +354,6 @@ $(document).ready(function () {
 		// TODO: repintar los productos.
 		$('#products .feature-content .row').html(getProductListHome(filteredProducts));
 	});
-
-
-
 
 	// -> CLICK FILTER TEXT SEARCH: Accion filtra por texto libre los productos.
 	$('#searchTextProductButton').click(function () {
@@ -359,31 +377,6 @@ $(document).ready(function () {
 
 		//TODO: display filtered products on page
 		$('#products .feature-content .row').html(getProductListHome(filteredProductsRango));
-	});
-
-	//
-	$('#botonEditar').click(function () {
-		$('#inputDiv').show();
-		$('#informacion').hide();
-	});
-
-	$('#botonGuardar').click(function () {
-		const updateProduct = new Product(
-			document.getElementById("inputId").value,
-			document.getElementById("inputNombre").value,
-			document.getElementById("inputPrecio").value,
-			document.getElementById("inputImagen").value,
-			document.getElementById("inputDescripcion").value,
-			document.getElementById("inputStock").value,
-			document.getElementById("inputCategoria").value,
-			document.getElementById("inputEtiqueta").value
-		)
-
-		console.log(updateProduct)
-
-		inventory.updateProduct(updateProduct)
-		console.log(inventory.getProducts())
-
 	});
 
 	// -> CLICK SHOW INPUT: Accion de mostrar formulario agregar producto.
