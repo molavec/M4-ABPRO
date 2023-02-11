@@ -475,3 +475,6 @@ span.feature-review {margin-left: 10px;}
     min-height: 26px;
 }
 
+#inputDiv{
+    display: none;
+}

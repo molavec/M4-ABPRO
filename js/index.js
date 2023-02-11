@@ -21,7 +21,7 @@ const updateTotals = () => {
 }
 
 // crea un arreglo de productos a partir de la 'base de datos' catalog.js
-const products = catalog.map((product)=> {
+export const products = catalog.map((product)=> {
 		return new Product(
 			product.code,
 			product.name,
@@ -118,7 +118,7 @@ $(document).ready(function(){
 							.parent()
 							.children(".single-feature-txt")
 							.children(".stock-message")
-							.html(`Sólo hay ${product.getStock()} dispoibles.`);
+							.html(`Sólo hay ${product.getStock()} disponibles.`);
 
 			// actualiza el valor al stock disponible
 			$(this).parent()
@@ -252,6 +252,8 @@ $(document).ready(function(){
 		// --> ACTUALIZA PRODUCTOS EN EL DOM
 		$('#products .feature-content .row').html(getProductListHome(inventory.getProducts()));
 
+		$('pruebaEditar').html(getProductListHome(inventory.getProducts()));
+
 		// Elimina los items del carro
 		cart.clear();
 
@@ -342,5 +344,32 @@ $(document).ready(function(){
 			//TODO: display filtered products on page
 			$('#products .feature-content .row').html(getProductListHome(filteredProductsRango));
 		});
-});
 
+		//
+		$('#botonEditar').click(function(){
+			$('#inputDiv').show();
+			$('#informacion').hide();
+		});
+
+
+
+		$('#botonGuardar').click(function(){
+			const updateProduct= new Product(
+												document.getElementById("inputId").value,
+												document.getElementById("inputNombre").value,
+												document.getElementById("inputPrecio").value,
+												document.getElementById("inputImagen").value,
+												document.getElementById("inputDescripcion").value,
+												document.getElementById("inputStock").value,
+												document.getElementById("inputCategoria").value,
+												document.getElementById("inputEtiqueta").value
+			)
+
+			console.log(updateProduct)
+
+			inventory.updateProduct(updateProduct)
+			console.log(inventory.getProducts())
+
+		});
+
+});
