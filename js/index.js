@@ -344,3 +344,47 @@ $(document).ready(function(){
 		});
 });
 
+
+        	// -> CLICK SHOW INPUT: Accion de mostrar formulario agregar producto.
+		   
+            
+			
+			$("#show").click(function(){
+				$("#formulario").show();
+			});
+            
+			$("#btnNewProduct").click(function(){
+
+
+				let inputImg = document.getElementById("inputImg")
+			let inputName = document.getElementById("inputName")
+			let inputCode = document.getElementById("inputCode")
+			let inputDescription = document.getElementById("inputDescription")
+			let inputPrice = document.getElementById("inputPrice")
+			let inputStock = document.getElementById("inputStock")
+			let inputCategoryId = document.getElementById("inputCategoryId")
+
+
+
+			let newProduct = new Product(inputImg.value, 
+					inputName.value,
+					inputCode.value,
+					inputDescription.value,
+					inputPrice.value,
+					inputStock.value,
+					inputCategoryId.value)
+					
+
+            inventory.addProduct(newProduct);
+
+			console.log('inventaRIO updatedd', inventory.getProducts())
+
+
+			}
+			
+			
+			);
+		
+
+
+		

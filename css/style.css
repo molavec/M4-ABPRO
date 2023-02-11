@@ -187,6 +187,12 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 .wrap-sticky nav.navbar.bootsnav.sticked .attr-nav > ul > li > a {padding:28px 15px;}
 /*.attr-nav*/
 
+/*boton agregar*/
+
+.oculto{
+    display: none;
+}
+
 /*badge*/
 .badge {
     background-color: #e99c2e;
