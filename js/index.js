@@ -26,13 +26,45 @@ const updateProductRowsInTable = function() {
 	$('#product-rows').html(getProductListRowsAdmin(inventory.getProducts()));
 	
 	// -> ADMIN: Eliminar productos de la lista
-	$('.delete-product').click(function () {
-		//TODO: Eliminar producto del inventario
+	$('.delete-product-cta').click(function () {
+		// Eliminar producto del inventario
 		const productId = $(this).attr('uuid');
-		console.log('uuid aqui', productId);
+		// console.log('uuid aqui', productId);
 
 		inventory.removeProduct(productId)
-		console.log('products', inventory.getProducts());
+		// console.log('products', inventory.getProducts());
+
+		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
+		updateProductRowsInTable();
+
+	});
+
+
+	// -> ADMIN: Editar productos de la lista
+	$('.edit-product-cta').click(function () {
+		$(this).parent().parent().children('.td-info').hide();
+		$(this).parent().parent().children('.td-input').show();
+	});
+
+	// -> ADMIN: Guardar productos de la lista
+	$('.save-product-cta').click(function () {
+
+		console.log('INPUT ID:', $(this).parent().parent().children());
+		const updateProduct = new Product(
+			$(this).parent().parent().children('.td-input').children('.input-id').val(),
+			$(this).parent().parent().children('.td-input').children('.input-name').val(),
+			$(this).parent().parent().children('.td-input').children('.input-price').val(),
+			$(this).parent().parent().children('.td-input').children('.input-image').val(),
+			$(this).parent().parent().children('.td-input').children('.input-description').val(),
+			$(this).parent().parent().children('.td-input').children('.input-stock').val(),
+			$(this).parent().parent().children('.td-input').children('.input-category-id').val(),
+			// document.getElementById("input-label-Etiqueta").val()
+		)
+
+		console.log(updateProduct)
+
+		inventory.updateProduct(updateProduct)
+		console.log(inventory.getProducts())
 
 		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
 		updateProductRowsInTable();
@@ -58,8 +90,6 @@ export const products = catalog.map((product) => {
 const categories = categoriesExamples.map((category) => {
 	return new Category(category.id, category.name)
 });
-
-
 
 
 // Crea el objeto carro.
@@ -313,32 +343,6 @@ $(document).ready(function () {
 
 		// Actualiza totales
 		updateTotals();
-
-	});
-
-	// -> ADMIN: Editar productos de la lista
-	//
-	$('.edit-product-cta').click(function () {
-		$(this).parent().parent().children('.td-info').hide();
-		$(this).parent().parent().children('.td-input').show();
-	});
-
-	$('#botonGuardar').click(function () {
-		const updateProduct = new Product(
-			document.getElementById("inputId").value,
-			document.getElementById("inputNombre").value,
-			document.getElementById("inputPrecio").value,
-			document.getElementById("inputImagen").value,
-			document.getElementById("inputDescripcion").value,
-			document.getElementById("inputStock").value,
-			document.getElementById("inputCategoria").value,
-			document.getElementById("inputEtiqueta").value
-		)
-
-		console.log(updateProduct)
-
-		inventory.updateProduct(updateProduct)
-		console.log(inventory.getProducts())
 
 	});
 

@@ -108,24 +108,40 @@ const getProductListRowsAdmin = (productList) => {
       <tr class="info-row">
         <th class="td-info" scope="row">${product.getName()}</th>
         <td class="td-info">${product.getId()}</td>
-        <td class="td-info">${product.getDescription()}</td>
-        <td class="td-info">${product.getImage()}</td>
+        <td class="td-info">${product.getDescription().substring(product.getDescription().length - 10)}...</td>
+        <td class="td-info">...${product.getImage().substring(product.getImage().length - 10)}</td>
         <td class="td-info">${product.getCategoryId()}</td>
         <td class="td-info">${product.getPrice()}</td>
         <td class="td-info">${product.getStock()}</td>
         <td class="td-info"> 
           <button class="edit-product-cta">Editar</button> 
-          <button uuid="${product.getId()}" class="delete-product" >Eliminar</button> 
+          <button uuid="${product.getId()}" class="delete-product-cta" >Eliminar</button> 
         </td>
 
-        <th class="td-input hide" scope="row"><input type="text" id="inputNombre" placeholder="nombre"></th>
-				<td class="td-input hide"><input type="text" id="inputId" placeholder="id"></td>
-				<td class="td-input hide"><input type="text" id="inputDescripcion" placeholder="descripcion"></td>
-				<td class="td-input hide"><input type="text" id="inputImagen" placeholder="imagen"></td>
-				<td class="td-input hide"><input type="text" id="inputCategoria" placeholder="categoria"></td>
-				<td class="td-input hide"><input type="number" id="inputPrecio" placeholder="precio"></td>
-				<td class="td-input hide"><input type="number" id="inputStock" placeholder="stock"></td>
-				<td class="td-input hide"><button id="botonGuardar">guardar</button></td>
+        <th class="td-input hide" scope="row">
+          <input value="${product.getName()}" type="text" class="input-name" placeholder="nombre">
+        </th>
+				<td class="td-input hide">
+          <input value="${product.getId()}" type="text" class="input-id" placeholder="id">
+        </td>
+				<td class="td-input hide">
+          <input value="${product.getDescription()}" type="text" class="input-description" placeholder="descripcion">
+        </td>
+				<td class="td-input hide">
+          <input value="${product.getImage()}" type="text" class="input-image" placeholder="imagen">
+        </td>
+				<td class="td-input hide">
+          <input value="${product.getCategoryId()}" type="text" class="input-category-id" placeholder="categoria">
+        </td>
+				<td class="td-input hide">
+          <input value="${product.getPrice()}" type="number" class="input-price" placeholder="precio">
+        </td>
+				<td class="td-input hide">
+          <input value="${product.getStock()}" type="number" class="input-stock" placeholder="stock">
+        </td>
+				<td class="td-input hide">
+          <button class="save-product-cta">guardar</button>
+        </td>
       </tr>
     `;
   })

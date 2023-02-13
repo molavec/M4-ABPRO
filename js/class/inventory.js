@@ -59,6 +59,7 @@ class Inventory {
    */
   updateProduct(product) {
     const index = this.products.findIndex(p => p.id === product.id);
+    console.log('product', product);
     if (index !== -1) {
       this.products[index] = product;
     }
