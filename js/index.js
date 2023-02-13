@@ -61,10 +61,10 @@ const updateProductRowsInTable = function() {
 			// document.getElementById("input-label-Etiqueta").val()
 		)
 
-		console.log(updateProduct)
+		// console.log(updateProduct)
 
 		inventory.updateProduct(updateProduct)
-		console.log(inventory.getProducts())
+		// console.log(inventory.getProducts())
 
 		// --> ADMIN: AÑADIR PRODUCTOS DINÁMINCAMENTE EN LA TABLA
 		updateProductRowsInTable();
